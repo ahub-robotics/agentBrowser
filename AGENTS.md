@@ -1,6 +1,6 @@
-# Jev Ultrafast
+# AgentRun
 
-Read README.md before editing. Keep the loop small: page -> indexed elements -> operation + target -> execution.
+Read README.md before editing. LangGraph owns routing; LangChain runnables call the native Jev policy and text helper. Keep the loop small: page -> indexed elements -> operation + target -> execution.
 
 - The input is one natural-language goal. Do not add site-specific plans or hardcoded field values.
 - TypeSafe chooses an operation and operation-specific target heads in one request. Consume only the selected operation's target.

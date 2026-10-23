@@ -2,7 +2,7 @@
 
 from urllib.parse import quote
 
-from jev_ultrafast.browser import Browser, StalePage
+from AgentBrowser.browser import Browser, StalePage
 
 HTML = """<!doctype html><title>Guard checks</title>
 <style>body{margin:30px}button{width:180px;height:50px}#outside{position:absolute;top:3000px}</style>
@@ -20,7 +20,8 @@ def main():
     try:
         page = browser.observe(screenshot=False)
         action = next(a for a in page["actions"] if a["label"] == "Continue")
-        browser.evaluate("document.querySelector('#target').style.transform='translateX(200px)'")
+        # Keep the moving button clear of the other controls: covering one changes the observed inventory.
+        browser.evaluate("document.querySelector('#target').style.transform='translateY(80px)'")
         assert browser.fresh(page), "Movement should use fresh geometry, not another model call"
         browser.act(action, page)
         assert browser.evaluate("window.clicks") == 1
@@ -53,11 +54,11 @@ def main():
                          "document.querySelector('#target').style.display='block'")
         page = browser.observe(screenshot=False)
         action = next(a for a in page["actions"] if a["label"] == "Delete account")
-        # A textless overlay does not alter the model's semantic state, but must block a click.
+        # Covered controls disappear from the reachable inventory and must invalidate the pending click.
         browser.evaluate("const cover=document.createElement('div'); "
                          "cover.style.cssText='position:fixed;inset:0;z-index:9999;background:white'; "
                          "document.body.append(cover)")
-        assert browser.fresh(page)
+        assert not browser.fresh(page)
         try:
             browser.act(action, page)
         except (RuntimeError, StalePage):

@@ -21,12 +21,9 @@ AGENT = None
 
 
 def load_environment():
-    path = Path.cwd() / ".env"
-    if path.exists():
-        for line in path.read_text().splitlines():
-            if "=" in line and not line.startswith("#"):
-                key, value = line.split("=", 1)
-                os.environ.setdefault(key, value)
+    from agentrun.config import load_environment as load
+
+    return load()
 
 
 def response_state():
@@ -34,10 +31,14 @@ def response_state():
     return {**state, "text_model": os.environ.get("TEXT_MODEL", "deepseek-chat"), "max_steps": MAX_STEPS}
 
 
-def close_browser():
+def close_browser(*, close_tab=False):
+    """Release the inspector session; closing its tab requires explicit opt-in."""
     global AGENT
     if AGENT:
-        AGENT.close()
+        if close_tab:
+            AGENT.close()
+        else:
+            AGENT.disconnect()
         AGENT = None
 
 
@@ -128,11 +129,15 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
-def main():
-    load_environment()
+def main(*, environment_loaded=False):
+    global PORT, ORIGIN
+    if not environment_loaded:
+        load_environment()
+    PORT = int(os.environ.get("TYPESAFE_DEMO_PORT", "8766"))
+    ORIGIN = f"http://127.0.0.1:{PORT}"
     atexit.register(close_browser)
     server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
-    print(f"Jev Ultrafast: {ORIGIN}", flush=True)
+    print(f"AgentRun · Jev + LangGraph: {ORIGIN}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

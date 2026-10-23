@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from jev_ultrafast import Agent
+from AgentBrowser import Agent
 
 URL = "https://www.google.com/travel/flights?hl=en"
 GOALS = (
@@ -38,27 +38,34 @@ def verify(page):
     return {"passed": all(checks.values()), "checks": checks, "visible_flights": flights}
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default="artifacts/flights/latest")
-    parser.add_argument("--keep-open", action="store_true")
-    args = parser.parse_args()
+    lifetime = parser.add_mutually_exclusive_group()
+    lifetime.add_argument("--close-tab", action="store_true", help="Close the working tab when the run ends.")
+    lifetime.add_argument("--keep-open", action="store_true", help="Keep the working tab open (the default).")
+    args = parser.parse_args(argv)
     folder = Path(args.output)
     folder.mkdir(parents=True, exist_ok=True)
-    agent = Agent(URL, GOALS)
+    options = {"close_tab_on_exit": True} if args.close_tab else {}
+    agent = Agent(URL, GOALS, **options)
     try:
         for state in agent.run():
             last = state["history"][-1] if state["history"] else {}
             print(state["elapsed_ms"], state["status"], last.get("action", ""), flush=True)
     finally:
-        state = agent.snapshot()
-        state["verification"] = verify(state["page"])
-        (folder / "state.json").write_text(json.dumps(state, indent=2))
-        (folder / "session.json").write_text(
-            json.dumps({"target": agent.browser.target, "session": agent.browser.session})
-        )
-        if not args.keep_open:
-            agent.close()
+        try:
+            state = agent.snapshot()
+            state["verification"] = verify(state["page"])
+            (folder / "state.json").write_text(json.dumps(state, indent=2))
+            (folder / "session.json").write_text(
+                json.dumps({"target": agent.browser.target, "session": agent.browser.session})
+            )
+        finally:
+            if args.close_tab:
+                agent.close()
+            else:
+                agent.disconnect()
     print(json.dumps(state["verification"], indent=2))
     if not state["verification"]["passed"]:
         raise SystemExit("Final page did not satisfy the route/date checks")

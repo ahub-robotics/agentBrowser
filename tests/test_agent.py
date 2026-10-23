@@ -7,9 +7,9 @@ from unittest.mock import Mock
 
 import pytest
 
-from jev_ultrafast import agent as loop
-from jev_ultrafast import model
-from jev_ultrafast.browser import StalePage, browser_operation, fingerprint
+from AgentBrowser import agent as loop
+from AgentBrowser import model
+from AgentBrowser.browser import StalePage, browser_operation, fingerprint
 
 
 def page():
@@ -218,6 +218,38 @@ def test_loading_waits_do_not_trigger_no_progress_stop(runner):
     assert len(runner.state["history"]) == 5 and runner.state["status"] == "ready"
 
 
+def test_click_with_no_observed_effect_is_removed_until_the_page_changes():
+    agent = loop.Agent.__new__(loop.Agent)
+    agent._rejected_actions = {}
+    agent.state = {"progress_feedback": {}, "verification": {"requirements": []}}
+    agent._trace_emit = Mock()
+    observed = page()
+    click = next(action for action in observed["actions"] if action["id"] == "e3")
+
+    assert agent._reject_no_effect_action(click, observed, [{"kind": "no_observed_change"}])
+    assert "e3" not in {action["id"] for action in agent._filter_rejected(observed)["actions"]}
+    assert agent.state["progress_feedback"]["reason"] == "no_observed_effect"
+    assert agent.state["progress_feedback"]["action_was_executed"] is True
+
+    changed = deepcopy(observed)
+    changed["text"] = "A different panel is now visible"
+    assert "e3" in {action["id"] for action in agent._filter_rejected(changed)["actions"]}
+
+
+def test_non_click_and_click_with_observed_effect_are_not_rejected():
+    agent = loop.Agent.__new__(loop.Agent)
+    agent._rejected_actions = {}
+    agent.state = {"progress_feedback": {}, "verification": {"requirements": []}}
+    agent._trace_emit = Mock()
+    observed = page()
+    click = next(action for action in observed["actions"] if action["id"] == "e3")
+
+    assert not agent._reject_no_effect_action(click, observed, [{"kind": "visible_text_changed"}])
+    assert not agent._reject_no_effect_action({**click, "kind": "wait"}, observed,
+                                              [{"kind": "no_observed_change"}])
+    assert agent._rejected_actions == {}
+
+
 def test_stale_observation_preserves_executed_action(runner):
     runner.state["decision"] = decision("e3")
     runner.state["browser"].observe.side_effect = StalePage("changed")
@@ -228,7 +260,7 @@ def test_stale_observation_preserves_executed_action(runner):
 
 
 def test_observation_is_one_atomic_browser_read(monkeypatch):
-    import jev_ultrafast.browser as browser
+    import AgentBrowser.browser as browser
 
     p = page()
     cdp = Mock(return_value={"result": {"value": p}})
@@ -240,7 +272,7 @@ def test_observation_is_one_atomic_browser_read(monkeypatch):
 
 
 def test_executor_rejects_a_stale_page_before_browser_input(monkeypatch):
-    import jev_ultrafast.browser as browser
+    import AgentBrowser.browser as browser
 
     b = browser.Browser.__new__(browser.Browser)
     b.fresh = Mock(return_value=False)
@@ -253,7 +285,7 @@ def test_executor_rejects_a_stale_page_before_browser_input(monkeypatch):
 
 @pytest.mark.parametrize("response", [{"exceptionDetails": {}}, {"result": {}}])
 def test_interrupted_dropdown_mutation_cannot_be_retried_as_stale(monkeypatch, response):
-    import jev_ultrafast.browser as browser
+    import AgentBrowser.browser as browser
 
     # A navigation can destroy the evaluation result after the change event already fired.
     if "exceptionDetails" in response:
