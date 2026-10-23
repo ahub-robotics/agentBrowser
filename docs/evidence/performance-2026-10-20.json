@@ -1,0 +1,433 @@
+{
+  "date": "2026-10-20",
+  "scope": "Review scheduling and concise outcome logs",
+  "notes": [
+    "Live runs use real coches.net and paid configured model APIs; offline tests do not.",
+    "The baseline and the first three timed attempts used the same goal. The latest timed attempt used a goal edited concurrently by the user, adding explicit Show Results/wait instructions and saving the first result URL; its latency and outcome are not directly comparable with those earlier runs.",
+    "These debugging samples are not a fixed-page latency or success-rate benchmark.",
+    "Discarded proposals are not repeated browser inputs."
+  ],
+  "baseline": {
+    "run": "coches-validation-20261019-181220-231274",
+    "report": "artifacts/coches-validation-20261019-181220-231274/report.json",
+    "trace": "artifacts/coches-validation-20261019-181220-231274/trace.jsonl",
+    "agent_status": "done",
+    "stop_reason": null,
+    "error": null,
+    "elapsed_ms": 93804,
+    "counts": {
+      "decisions": 25,
+      "decision_http_attempts": 25,
+      "text_calls": 2,
+      "verification_calls": 18,
+      "verification_http_attempts": 18,
+      "browser_actions": 17,
+      "candidate_windows": 25
+    },
+    "latencies": {
+      "decisions": {
+        "count": 25,
+        "total_ms": 8631,
+        "median_ms": 320
+      },
+      "verification_reviews": {
+        "count": 18,
+        "total_ms": 75996,
+        "median_ms": 3996.5
+      },
+      "text_calls": {
+        "count": 2,
+        "total_ms": 2021,
+        "median_ms": 1010.5
+      }
+    },
+    "outcome": {
+      "status": "verified",
+      "criteria": {
+        "bmw_z4": "verified",
+        "madrid": "verified",
+        "price_max": "verified",
+        "first_result": "verified"
+      }
+    },
+    "review_model": [
+      "openai/gpt-4.1"
+    ],
+    "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panelIn Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 € Go to the first Result"
+  },
+  "attempts": [
+    {
+      "run": "coches-validation-20261020-074529-924107",
+      "report": "artifacts/coches-validation-20261020-074529-924107/report.json",
+      "trace": "artifacts/coches-validation-20261020-074529-924107/trace.jsonl",
+      "agent_status": "blocked",
+      "stop_reason": "repeated_state",
+      "error": null,
+      "elapsed_ms": 56218,
+      "counts": {
+        "decisions": 33,
+        "decision_http_attempts": 33,
+        "text_calls": 3,
+        "verification_calls": 11,
+        "verification_http_attempts": 11,
+        "browser_actions": 23,
+        "candidate_windows": 33
+      },
+      "latencies": {
+        "decisions": {
+          "count": 33,
+          "total_ms": 11005,
+          "median_ms": 335
+        },
+        "verification_reviews": {
+          "count": 11,
+          "total_ms": 34254,
+          "median_ms": 2797
+        },
+        "text_calls": {
+          "count": 3,
+          "total_ms": 3151,
+          "median_ms": 972
+        }
+      },
+      "outcome": {
+        "status": "failed",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "failed"
+        }
+      },
+      "review_model": [
+        "openai/gpt-4.1"
+      ],
+      "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panelIn Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 € Go to the first Result"
+    },
+    {
+      "run": "coches-validation-20261020-080433-214204",
+      "report": "artifacts/coches-validation-20261020-080433-214204/report.json",
+      "trace": "artifacts/coches-validation-20261020-080433-214204/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_budget_insufficient",
+      "error": null,
+      "elapsed_ms": 46873,
+      "counts": {
+        "decisions": 25,
+        "decision_http_attempts": 25,
+        "text_calls": 3,
+        "verification_calls": 8,
+        "verification_http_attempts": 7,
+        "browser_actions": 16,
+        "candidate_windows": 25
+      },
+      "latencies": {
+        "decisions": {
+          "count": 25,
+          "total_ms": 8374,
+          "median_ms": 333
+        },
+        "verification_reviews": {
+          "count": 8,
+          "total_ms": 30877,
+          "median_ms": 3277.0
+        },
+        "text_calls": {
+          "count": 3,
+          "total_ms": 2682,
+          "median_ms": 869
+        }
+      },
+      "outcome": {
+        "status": "failed",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "failed"
+        }
+      },
+      "review_model": [
+        "openai/gpt-4.1"
+      ],
+      "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panelIn Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 € Go to the first Result"
+    },
+    {
+      "run": "coches-validation-20261020-081713-002561",
+      "report": "artifacts/coches-validation-20261020-081713-002561/report.json",
+      "trace": "artifacts/coches-validation-20261020-081713-002561/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_no_progress",
+      "error": null,
+      "elapsed_ms": 57437,
+      "counts": {
+        "decisions": 27,
+        "decision_http_attempts": 27,
+        "text_calls": 3,
+        "verification_calls": 11,
+        "verification_http_attempts": 11,
+        "browser_actions": 16,
+        "candidate_windows": 27
+      },
+      "latencies": {
+        "decisions": {
+          "count": 27,
+          "total_ms": 8637,
+          "median_ms": 318
+        },
+        "verification_reviews": {
+          "count": 11,
+          "total_ms": 39770,
+          "median_ms": 3688
+        },
+        "text_calls": {
+          "count": 3,
+          "total_ms": 2990,
+          "median_ms": 982
+        }
+      },
+      "outcome": {
+        "status": "verified",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "verified"
+        }
+      },
+      "review_model": [
+        "openai/gpt-4.1"
+      ],
+      "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panelIn Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 € Go to the first Result"
+    },
+    {
+      "run": "coches-validation-20261020-100529-892984",
+      "report": "artifacts/coches-validation-20261020-100529-892984/report.json",
+      "trace": "artifacts/coches-validation-20261020-100529-892984/trace.jsonl",
+      "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panel. In Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 €. Click Show Results.  and wait for the results panelClick First result available and save the url",
+      "goal_changed_from_baseline": true,
+      "agent_status": "unverified",
+      "stop_reason": "verification_provider_error",
+      "error": null,
+      "elapsed_ms": 25316,
+      "counts": {
+        "decisions": 17,
+        "decision_http_attempts": 17,
+        "text_calls": 3,
+        "verification_calls": 4,
+        "verification_http_attempts": 4,
+        "browser_actions": 12,
+        "candidate_windows": 17
+      },
+      "latencies": {
+        "decisions": {
+          "count": 17,
+          "total_ms": 5486,
+          "median_ms": 323
+        },
+        "verification_reviews": {
+          "count": 4,
+          "total_ms": 11784,
+          "median_ms": 3820.0
+        },
+        "text_calls": {
+          "count": 3,
+          "total_ms": 3239,
+          "median_ms": 1061
+        }
+      },
+      "outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        }
+      },
+      "review_model": [
+        "openai/gpt-4.1"
+      ],
+      "failure_metadata": {
+        "model": "openai/gpt-4.1",
+        "http_attempts": 1,
+        "request_bytes": 63701,
+        "context_bytes": 47600,
+        "response_bytes": 0,
+        "context_truncated": true,
+        "omitted_evidence_count": 0,
+        "usage": {},
+        "latency_ms": 172,
+        "finish_reason": null,
+        "omitted_execution_count": 0,
+        "error": "provider_error",
+        "trigger": "before_action"
+      },
+      "notes": [
+        "Stopped on verification_provider_error after 25.316 seconds; this is not a successful faster completion.",
+        "The independent evaluator reported unknown for all four existing criteria. Those criteria do not validate the newly requested URL-saving outcome.",
+        "The actual goal above is copied from the run report and start event, not reconstructed from the current test.py."
+      ]
+    }
+  ],
+  "local_chrome": {
+    "source": "artifacts/local-browser-regression-20261020060604/report.json",
+    "checks": 59,
+    "paid_api_calls": 0,
+    "simulated_policy_calls": 4
+  },
+  "conditional_review_probe": {
+    "artifact": "artifacts/conditional-review-20261020.json",
+    "source_trace": "artifacts/coches-validation-20261020-081713-002561/trace.jsonl",
+    "goal": "Accept cookies if exists. Type BMW z4, select the model z4 and press Aceptar in the model panelIn Provincia type Madrid and select  Madrid  in the provincias panel Filter price  20.000 € Go to the first Result",
+    "kind": "review of existing observations; not a new browser run",
+    "assessment": {
+      "requirements": [
+        {
+          "id": "cookies-accept-if-exists",
+          "goal_quote": "Accept cookies if exists",
+          "description": "Cookies are accepted if a cookie prompt is present. If not present, this requirement is satisfied by its non-applicability in the visible, settled scope.",
+          "status": "unknown",
+          "evidence_refs": [
+            "71cdd9653995f0b4:observation"
+          ]
+        },
+        {
+          "id": "search-bmw-z4",
+          "goal_quote": "Type BMW z4, select the model z4 and press Aceptar in the model panel",
+          "description": "'BMW z4' is entered in the search box, the Z4 model is selected, and the Aceptar button is pressed in the model panel.",
+          "status": "satisfied",
+          "evidence_refs": [
+            "c186ec8e02e35ddb:node:18",
+            "c186ec8e02e35ddb:page:text"
+          ]
+        },
+        {
+          "id": "provincia-madrid",
+          "goal_quote": "In Provincia type Madrid and select  Madrid  in the provincias panel",
+          "description": "'Madrid' is typed into the Provincia field and Madrid is selected in that panel.",
+          "status": "satisfied",
+          "evidence_refs": [
+            "c186ec8e02e35ddb:node:90",
+            "c186ec8e02e35ddb:node:180",
+            "c186ec8e02e35ddb:node:183"
+          ]
+        },
+        {
+          "id": "filter-price-20000",
+          "goal_quote": "Filter price  20.000 €",
+          "description": "A price filter of 20,000 € is set.",
+          "status": "satisfied",
+          "evidence_refs": [
+            "6b8ed5cad2656c0d:node:23",
+            "6b8ed5cad2656c0d:page:text"
+          ]
+        },
+        {
+          "id": "go-to-first-result",
+          "goal_quote": "Go to the first Result",
+          "description": "The first result is opened from the results list.",
+          "status": "satisfied",
+          "evidence_refs": [
+            "0a7c11047cef2171:page:url",
+            "061f432dd5e5b584:node:804"
+          ]
+        }
+      ],
+      "action_assessment": "reconsider",
+      "feedback": "All specified requirements except for cookies are satisfied by direct evidence. No cookie prompt was observed in the settled, visible scope, so its status remains unknown but likely not applicable. All other requested outcomes are supported by observed evidence.",
+      "all_satisfied": false
+    },
+    "metadata": {
+      "model": "openai/gpt-4.1",
+      "http_attempts": 1,
+      "request_bytes": 65386,
+      "context_bytes": 49099,
+      "response_bytes": 1744,
+      "context_truncated": false,
+      "omitted_evidence_count": 0,
+      "usage": {
+        "prompt_tokens": 16631,
+        "completion_tokens": 467,
+        "total_tokens": 17098,
+        "cost": 0.036998,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.036998,
+          "upstream_inference_prompt_cost": 0.033262,
+          "upstream_inference_completions_cost": 0.003736
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "latency_ms": 3298,
+      "finish_reason": "stop",
+      "omitted_execution_count": 0
+    },
+    "notes": [
+      "The conditional cookies requirement remained unknown; all_satisfied was false and the proposal was reconsidered."
+    ]
+  },
+  "startup_failures": [
+    {
+      "before_run": "coches-validation-20261020-100529-892984",
+      "stage": "module_import",
+      "status": "not_started",
+      "goal": null,
+      "goal_note": "No goal was executed because importing the evaluator failed.",
+      "error_type": "ImportError",
+      "error_symbol": "ORIGINAL_GOAL",
+      "error_summary": "The evaluator still imported ORIGINAL_GOAL after that symbol was removed from test.py.",
+      "model_calls": 0,
+      "model_http_attempts": 0,
+      "browser_actions": 0,
+      "elapsed_ms": null,
+      "report": null,
+      "trace": null,
+      "source": "Execution failure reported in the implementation session; no run artifact was created."
+    }
+  ],
+  "final_checks": {
+    "source": "Final check results reported in the implementation session",
+    "pytest": {
+      "status": "passed",
+      "passed": 329
+    },
+    "ruff_check": {
+      "status": "passed",
+      "command": "uv run ruff check ."
+    },
+    "javascript_app": {
+      "status": "passed",
+      "command": "node --check jev_ultrafast/static/app.js"
+    },
+    "javascript_snapshot": {
+      "status": "passed",
+      "command": "node --check jev_ultrafast/snapshot.js"
+    },
+    "build": {
+      "status": "passed",
+      "command": "uv build"
+    },
+    "git_diff_check": {
+      "status": "passed",
+      "command": "git diff --check"
+    },
+    "local_chrome": {
+      "status": "passed",
+      "checks": 59,
+      "timing": "previous local regression run",
+      "source": "artifacts/local-browser-regression-20261020060604/report.json",
+      "paid_api_calls": 0
+    }
+  }
+}

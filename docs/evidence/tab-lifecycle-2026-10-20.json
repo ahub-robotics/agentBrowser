@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-20",
+  "source": "artifacts/tab-lifecycle-20261020.json",
+  "site": "https://www.coches.net/",
+  "tab_still_open_after_context_exit": true,
+  "agent_session_detached": true,
+  "browser_actions": 0,
+  "model_calls": 0,
+  "checks": {
+    "pytest_passed": 445,
+    "ruff": "passed",
+    "javascript_app": "passed",
+    "javascript_snapshot": "passed",
+    "git_diff_check": "passed",
+    "build": "passed"
+  },
+  "notes": [
+    "The real-site check only verifies tab lifetime, not completion of the search task.",
+    "Explicit close and error paths were checked with offline browser substitutes.",
+    "The real-site tab was left open after the check."
+  ]
+}

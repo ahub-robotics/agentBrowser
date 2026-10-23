@@ -1,0 +1,225 @@
+{
+  "dates": [
+    "2026-10-20",
+    "2026-10-21"
+  ],
+  "site": "coches.net",
+  "entrypoint": "test.py",
+  "models_simulated": false,
+  "scope": "Configured search filters, then all observed results and pages with verified contact submissions.",
+  "all_requested_results_verified": false,
+  "limitations": [
+    "Development runs with code changes between attempts; not a fixed-version reliability benchmark.",
+    "The last run sent one real contact and observed the site confirmation; the full result loop was not completed.",
+    "The last run predates explicit item scope registration and has no registered item for the sent contact.",
+    "Observed URL alias and item scope fixes were checked with an adapted historical response locally; no new autonomous model execution validates the complete loop after those fixes.",
+    "The last run is retained without resuming browser mutations to avoid a duplicate contact."
+  ],
+  "privacy": "No credentials, names, phone numbers, emails, advertisement URLs or complete page text retained here.",
+  "runs": [
+    {
+      "label": "before",
+      "run_id": "30ddb39836724c4db8552930665a6ffb",
+      "log": "artifacts/diagnose-supervisor-20261020/before.log",
+      "checkpoint": "artifacts/supervised/30ddb39836724c4db8552930665a6ffb/state.sqlite",
+      "reported_duration_seconds": 25.2,
+      "saved_elapsed_ms": 25245,
+      "status": "waiting_feedback",
+      "stop_reason": "supervisor_invalid_response",
+      "outcome": "invalid_supervisor_response_after_model_filter",
+      "browser_actions_observed": 4,
+      "browser_attempts_rejected_before_input": 1,
+      "jev_calls": 7,
+      "jev_http_attempts": 7,
+      "text_calls": 1,
+      "supervisor_calls": 3,
+      "supervisor_http_attempts": 3,
+      "registered_items": 0,
+      "registered_loops": 0,
+      "confirmed_contacts": 0,
+      "full_goal_verified": false
+    },
+    {
+      "label": "after-01",
+      "run_id": "7b61736417c14405a4b4f7d17d8866f9",
+      "log": "artifacts/diagnose-supervisor-20261020/after-01.log",
+      "checkpoint": "artifacts/supervised/7b61736417c14405a4b4f7d17d8866f9/state.sqlite",
+      "reported_duration_seconds": 65.7,
+      "saved_elapsed_ms": 65726,
+      "status": "waiting_feedback",
+      "stop_reason": "supervisor_feedback",
+      "outcome": "redundant_question_before_showing_filtered_results",
+      "browser_actions_observed": 15,
+      "browser_attempts_rejected_before_input": 3,
+      "jev_calls": 22,
+      "jev_http_attempts": 22,
+      "text_calls": 2,
+      "supervisor_calls": 8,
+      "supervisor_http_attempts": 8,
+      "registered_items": 0,
+      "registered_loops": 0,
+      "confirmed_contacts": 0,
+      "full_goal_verified": false
+    },
+    {
+      "label": "after-02",
+      "run_id": "57818b2194ae41ce868cc537c95d76aa",
+      "log": "artifacts/diagnose-supervisor-20261020/after-02.log",
+      "checkpoint": "artifacts/supervised/57818b2194ae41ce868cc537c95d76aa/state.sqlite",
+      "reported_duration_seconds": 7.7,
+      "saved_elapsed_ms": 7698,
+      "status": "done",
+      "stop_reason": null,
+      "outcome": "false_completion_after_cookie_subtask_only",
+      "browser_actions_observed": 0,
+      "browser_attempts_rejected_before_input": 0,
+      "jev_calls": 1,
+      "jev_http_attempts": 1,
+      "text_calls": 0,
+      "supervisor_calls": 2,
+      "supervisor_http_attempts": 2,
+      "registered_items": 0,
+      "registered_loops": 0,
+      "confirmed_contacts": 0,
+      "full_goal_verified": false
+    },
+    {
+      "label": "after-03",
+      "run_id": "bd80823543c84b979aa9ab50b6412d24",
+      "log": "artifacts/diagnose-supervisor-20261020/after-03.log",
+      "checkpoint": "artifacts/supervised/bd80823543c84b979aa9ab50b6412d24/state.sqlite",
+      "reported_duration_seconds": 21.7,
+      "saved_elapsed_ms": 21751,
+      "status": "waiting_feedback",
+      "stop_reason": "supervisor_feedback",
+      "outcome": "redundant_question_about_observed_model_filter",
+      "browser_actions_observed": 4,
+      "browser_attempts_rejected_before_input": 1,
+      "jev_calls": 7,
+      "jev_http_attempts": 7,
+      "text_calls": 1,
+      "supervisor_calls": 3,
+      "supervisor_http_attempts": 3,
+      "registered_items": 0,
+      "registered_loops": 1,
+      "confirmed_contacts": 0,
+      "full_goal_verified": false
+    },
+    {
+      "label": "after-04",
+      "run_id": "dbdfcd64ed674eabaa9fa0697441d6b9",
+      "log": "artifacts/diagnose-supervisor-20261020/after-04.log",
+      "checkpoint": "artifacts/supervised/dbdfcd64ed674eabaa9fa0697441d6b9/state.sqlite",
+      "reported_duration_seconds": 21.8,
+      "saved_elapsed_ms": 21768,
+      "status": "waiting_feedback",
+      "stop_reason": "supervisor_feedback",
+      "outcome": "delegation_missing_subtask_then_redundant_feedback",
+      "browser_actions_observed": 0,
+      "browser_attempts_rejected_before_input": 0,
+      "jev_calls": 1,
+      "jev_http_attempts": 1,
+      "text_calls": 0,
+      "supervisor_calls": 3,
+      "supervisor_http_attempts": 3,
+      "registered_items": 0,
+      "registered_loops": 1,
+      "confirmed_contacts": 0,
+      "full_goal_verified": false
+    },
+    {
+      "label": "after-05",
+      "run_id": "021377852bff4939bdaff7263c400d02",
+      "log": "artifacts/diagnose-supervisor-20261020/after-05.log",
+      "checkpoint": "artifacts/supervised/021377852bff4939bdaff7263c400d02/state.sqlite",
+      "reported_duration_seconds": 87.3,
+      "saved_elapsed_ms": 87324,
+      "status": "waiting_feedback",
+      "stop_reason": "supervisor_invalid_response",
+      "outcome": "one_confirmed_contact_then_invalid_observed_url_reference",
+      "browser_actions_observed": 19,
+      "browser_attempts_rejected_before_input": 5,
+      "jev_calls": 32,
+      "jev_http_attempts": 32,
+      "text_calls": 4,
+      "supervisor_calls": 8,
+      "supervisor_http_attempts": 8,
+      "registered_items": 0,
+      "registered_loops": 1,
+      "confirmed_contacts": 1,
+      "full_goal_verified": false,
+      "submission_confirmation": {
+        "ref": "bc09c9ebd30570d9:page:text",
+        "observed_at": 30,
+        "excerpt": "¡Mensaje enviado!"
+      },
+      "returned_to_filtered_results": true,
+      "browser_mutations_resumed_after_stop": false
+    }
+  ],
+  "final_readonly_validation": {
+    "report": "artifacts/diagnose-supervisor-20261020/final-readonly-verification.json",
+    "independent_dom": "artifacts/diagnose-supervisor-20261020/final-independent-dom.json",
+    "model_calls": 0,
+    "browser_inputs": 0,
+    "saved_checkpoint_modified": false,
+    "historical_response_adaptation": {
+      "scope": "item",
+      "loop_id": "results-ads-loop"
+    },
+    "observed_url_alias_registered": true,
+    "source_ref": "1ef6d8cfeed66a3d:node:465",
+    "validation_method": "Historical response adapted locally and passed through current validators; not newly generated LLM output.",
+    "filter_outcomes": {
+      "bmw_z4": {
+        "status": "verified",
+        "evidence": {
+          "source": "search_heading",
+          "value": "14 Coches BMW Z4 nuevos, de segunda mano y km0 en Madrid"
+        }
+      },
+      "madrid": {
+        "status": "verified",
+        "evidence": {
+          "source": "search_heading",
+          "value": "14 Coches BMW Z4 nuevos, de segunda mano y km0 en Madrid"
+        }
+      },
+      "price_max": {
+        "status": "verified",
+        "evidence": {
+          "source": "explicit URL upper bound",
+          "parameter": "maxprice",
+          "value": "20000"
+        }
+      }
+    },
+    "full_contact_loop_verified": false,
+    "tab_left_open": true
+  },
+  "final_checks": {
+    "date": "2026-10-21",
+    "pytest": {
+      "command": "uv run pytest",
+      "passed": 630,
+      "duration_seconds": 4.09,
+      "paid_apis": false
+    },
+    "ruff": {
+      "command": "uv run ruff check .",
+      "status": "passed"
+    },
+    "javascript_syntax": {
+      "files": [
+        "jev_ultrafast/static/app.js",
+        "jev_ultrafast/snapshot.js"
+      ],
+      "status": "passed"
+    },
+    "diff_check": "passed",
+    "build": {
+      "command": "uv build",
+      "status": "passed"
+    }
+  }
+}

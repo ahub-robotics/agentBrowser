@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Generic observation and scroll recovery fixture</title>
+<style>
+  body { font: 16px sans-serif; margin: 20px; }
+  section { display: inline-block; vertical-align: top; width: 260px; margin: 0 20px 20px 0; }
+  .choices { overflow-y: auto; height: 180px; border: 1px solid; }
+  .choices button { display: block; height: 36px; width: 100%; }
+  #loading[aria-busy="true"] { min-height: 40px; }
+  .escape-anchor { position: relative; height: 120px; margin-top: 20px; }
+  .overflow-shell { overflow: hidden; height: 20px; }
+  .escaped-popup { position: absolute; top: 35px; padding: 10px; background: white; border: 1px solid; }
+</style>
+<section aria-label="Origin">
+  <h2>Origin</h2>
+  <input aria-label="Search" required>
+  <button>Accept</button>
+</section>
+<section aria-label="Destination">
+  <h2>Destination</h2>
+  <input aria-label="Search" value="Already correct">
+  <button>Accept</button>
+</section>
+<section aria-label="Amount">
+  <h2>Amount</h2>
+  <div id="amount" class="choices" role="listbox" aria-label="Amount options"></div>
+</section>
+<section aria-label="Distance">
+  <h2>Distance</h2>
+  <div id="distance" class="choices" role="listbox" aria-label="Distance options"></div>
+</section>
+<div id="loading"></div>
+<button id="load">Load delayed content</button>
+<a href="./recovery.html#first-result">First observed result</a>
+<a href="./recovery.html#second-result">Second observed result</a>
+<button aria-controls="escaped-popup" aria-expanded="true">Related popup</button>
+<div class="escape-anchor">
+  <div class="overflow-shell">
+    Anchor with overflow
+    <div id="escaped-popup" class="escaped-popup" role="dialog">
+      <p>Visible popup outside overflow ancestor</p>
+      <input aria-label="Popup search">
+      <button>Confirm popup</button>
+    </div>
+  </div>
+</div>
+<iframe id="hidden-frame" title="Hidden integration host" style="display:none;width:0;height:0"></iframe>
+<iframe id="visible-frame" title="Visible opaque panel" style="display:none;position:fixed;inset:0;width:100vw;height:100vh;z-index:10000;background:white"></iframe>
+<script>
+  window.fixtureEvents={wheel:0, amount:0, distance:0};
+  for (const id of ['amount','distance']) {
+    const root=document.getElementById(id);
+    for (let i=1;i<=30;i++) {
+      const button=document.createElement('button');
+      button.textContent=`${id} ${i}`;
+      button.onclick=()=>{ window.fixtureEvents[id]++; button.setAttribute('aria-pressed','true'); };
+      root.append(button);
+    }
+    root.addEventListener('wheel',()=>window.fixtureEvents.wheel++);
+  }
+  document.getElementById('load').onclick=()=>{
+    const root=document.getElementById('loading');
+    root.setAttribute('aria-busy','true');
+    setTimeout(()=>{ root.textContent='Delayed content arrived'; root.removeAttribute('aria-busy'); },350);
+  };
+</script>

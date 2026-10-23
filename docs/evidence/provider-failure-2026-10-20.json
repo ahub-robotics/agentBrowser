@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-20",
+  "scope": "Diagnose early unverified stop before Aceptar",
+  "report": "artifacts/coches-validation-20261020-110701-645738/report.json",
+  "trace": "artifacts/coches-validation-20261020-110701-645738/trace.jsonl",
+  "agent_status": "unverified",
+  "stop_reason": "verification_provider_error",
+  "elapsed_ms": 4647,
+  "counts": {
+    "decisions": 7,
+    "decision_http_attempts": 7,
+    "text_calls": 2,
+    "verification_calls": 1,
+    "verification_http_attempts": 1,
+    "browser_actions": 3,
+    "candidate_windows": 7
+  },
+  "independent_outcome": "unknown",
+  "review_failure": {
+    "model": "openai/gpt-4.1",
+    "http_attempts": 1,
+    "request_bytes": 40507,
+    "latency_ms": 57,
+    "provider_error_kind": "billing",
+    "provider_http_status": 402,
+    "error": "provider_error",
+    "trigger": "before_action"
+  },
+  "executed_actions": [
+    {
+      "step": 1,
+      "kind": "click",
+      "action": "Marca y modelo"
+    },
+    {
+      "step": 2,
+      "kind": "fill",
+      "action": "Buscar por palabras"
+    },
+    {
+      "step": 3,
+      "kind": "click",
+      "action": "Z4"
+    }
+  ],
+  "notes": [
+    "This is a fresh real-site reproduction, not a trace recovered from the user console run.",
+    "The first verification HTTP request was rejected with status 402; the exact account balance was not inspected.",
+    "Aceptar was never executed. No verification bypass, model change, account change or browser mutation retry was performed.",
+    "The live reproduction calls configured APIs. All unit tests use local provider and browser substitutes.",
+    "Transport errors now retain only safe category/status metadata and a concise log reason."
+  ],
+  "checks": {
+    "pytest_passed": 364,
+    "ruff": "passed",
+    "javascript_app": "passed",
+    "javascript_snapshot": "passed",
+    "build": "passed"
+  }
+}

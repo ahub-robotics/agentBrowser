@@ -1,0 +1,296 @@
+{
+  "date": "2026-10-21",
+  "contract_version": 2,
+  "validation_pending": true,
+  "acceptance_status": "incomplete",
+  "counting_policy": "The resumed development-02 entry has the same run_id and cumulative outcomes and counters; never add it to the pre-resume entry.",
+  "final_checks": {
+    "status": "passed",
+    "pytest_passed": 872,
+    "pytest_seconds": 12.0,
+    "paid_api_http_attempts": 0,
+    "ruff": "passed",
+    "javascript_syntax": {
+      "inspector": "passed",
+      "dom_snapshot": "passed",
+      "coordinator_fixture": "passed"
+    },
+    "git_diff_check": "passed",
+    "uv_build": "passed"
+  },
+  "scope": "Deterministic task and item scheduling with audited goal-derived plans, strict model review deltas and read-only recovery.",
+  "privacy": "No credentials, account amounts, local origins or ports, advertisement names or URLs, or form contents are retained here.",
+  "limitations": [
+    "Development runs include code and prompt changes between attempts; they are not a fixed-version acceptance series.",
+    "The complete 14-item browser run used simulated models and does not measure real-model decision quality.",
+    "Neither recorded real-model development run completed the 14-item local goal.",
+    "Resuming development-02 reached eight confirmed submissions and seven returns, then received another in-flight-budget HTTP 402; the goal remains incomplete.",
+    "The external-site diagnostic verified one of three visits; the subsequent filtered run verified all three using simulated models. Filters were supplied by its initial URL, not configured by a real model.",
+    "No further live-model attempts were made after the resumed in-flight-budget HTTP 402. Real-model acceptance remains pending provider-block resolution; positive balance does not establish the internal cause or a resolution time.",
+    "Strict references and schema validation establish provenance, not semantic correctness."
+  ],
+  "limits": {
+    "actions": 180,
+    "decisions": 360,
+    "windows": 360,
+    "supervisor_calls": 120,
+    "seconds": 900
+  },
+  "runs": [
+    {
+      "label": "offline_browser_local",
+      "run_id": "330e218ce8844b3c83fe06e39bdf3c32",
+      "report": "artifacts/coordinator-v2-offline-browser/local-1/report.json",
+      "scenario": "isolated_local_fixture",
+      "real_browser": true,
+      "models_simulated": true,
+      "strict_v2_tools": true,
+      "status": "done",
+      "stop_reason": null,
+      "verified": true,
+      "independent_outcome": {
+        "requested_items": 14,
+        "distinct_submitted_items": 14,
+        "distinct_confirmed_items": 14,
+        "distinct_returned_items": 14,
+        "duplicate_submissions": 0,
+        "rejected_submissions": 0,
+        "pages_observed": 2,
+        "end_observed": true
+      },
+      "metrics": {
+        "actions": 59,
+        "jev_calls": 88,
+        "jev_http_attempts": 0,
+        "text_calls": 15,
+        "supervisor_calls": 33,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 88
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0,
+      "paid_api_http_attempts": 0
+    },
+    {
+      "label": "live_development_01",
+      "run_id": "4cf64846359443aa9accb9c4512f86ef",
+      "report": "artifacts/coordinator-v2-live-development-01/local-1/report.json",
+      "scenario": "isolated_local_fixture",
+      "real_browser": true,
+      "models_simulated": false,
+      "strict_v2_tools": true,
+      "status": "unverified",
+      "stop_reason": "recovery_exhausted",
+      "verified": false,
+      "diagnosis": "Workflow actions included in global constraints obscured the current step's scope. Prompt and runtime delimitations were subsequently revised.",
+      "independent_outcome": {
+        "requested_items": 14,
+        "distinct_submitted_items": 2,
+        "distinct_confirmed_items": 2,
+        "distinct_returned_items": 2,
+        "duplicate_submissions": 0,
+        "rejected_submissions": 0,
+        "pages_observed": 1,
+        "end_observed": false
+      },
+      "metrics": {
+        "actions": 14,
+        "jev_calls": 24,
+        "jev_http_attempts": 24,
+        "text_calls": 3,
+        "supervisor_calls": 17,
+        "supervisor_http_attempts": 17,
+        "candidate_windows": 24
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0
+    },
+    {
+      "label": "live_development_02",
+      "run_id": "c3f1eceffb10455e9976ba03521ba8ce",
+      "report": "artifacts/coordinator-v2-live-development-02/local-1/report.json",
+      "scenario": "isolated_local_fixture",
+      "real_browser": true,
+      "models_simulated": false,
+      "strict_v2_tools": true,
+      "status": "blocked",
+      "stop_reason": "supervisor_provider_error",
+      "verified": false,
+      "provider_error": {
+        "provider_error_kind": "billing",
+        "provider_http_status": 402,
+        "provider_limit_source": "openrouter_in_flight_budget",
+        "provider_limit_reason": "in_flight_budget_exhausted"
+      },
+      "independent_outcome": {
+        "requested_items": 14,
+        "distinct_submitted_items": 7,
+        "distinct_confirmed_items": 7,
+        "distinct_returned_items": 6,
+        "duplicate_submissions": 0,
+        "rejected_submissions": 0,
+        "pages_observed": 1,
+        "end_observed": false
+      },
+      "metrics": {
+        "actions": 29,
+        "jev_calls": 43,
+        "jev_http_attempts": 43,
+        "text_calls": 8,
+        "supervisor_calls": 17,
+        "supervisor_http_attempts": 17,
+        "candidate_windows": 43
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0
+    },
+    {
+      "label": "live_development_02_resumed",
+      "resumes_label": "live_development_02",
+      "run_id": "c3f1eceffb10455e9976ba03521ba8ce",
+      "report": "artifacts/coordinator-v2-live-development-02-resumed/report.json",
+      "scenario": "isolated_local_fixture",
+      "real_browser": true,
+      "models_simulated": false,
+      "strict_v2_tools": true,
+      "same_original_tab": true,
+      "same_fixture_origin": true,
+      "initial_submission_count": 7,
+      "metrics_are_cumulative": true,
+      "outcomes_are_cumulative": true,
+      "status": "blocked",
+      "stop_reason": "supervisor_provider_error",
+      "verified": false,
+      "provider_error": {
+        "provider_error_kind": "billing",
+        "provider_http_status": 402,
+        "provider_limit_source": "openrouter_in_flight_budget",
+        "provider_limit_reason": "in_flight_budget_exhausted"
+      },
+      "diagnosis": "The coordinator also incorrectly rejected discovery exhaustion while registered items remained unprocessed. Discovery coverage is now separated from processing completion, with offline regressions for pending work, dependencies, empty scope and alias merges below an explicit requested count.",
+      "independent_outcome": {
+        "requested_items": 14,
+        "distinct_submitted_items": 8,
+        "distinct_confirmed_items": 8,
+        "distinct_returned_items": 7,
+        "duplicate_submissions": 0,
+        "rejected_submissions": 0,
+        "pages_observed": 2,
+        "end_observed": true
+      },
+      "metrics": {
+        "actions": 34,
+        "jev_calls": 50,
+        "jev_http_attempts": 50,
+        "text_calls": 9,
+        "supervisor_calls": 23,
+        "supervisor_http_attempts": 23,
+        "candidate_windows": 50,
+        "supervisor_phase_calls": {
+          "audit": 1,
+          "initialize": 1,
+          "review": 21
+        }
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0
+    },
+    {
+      "label": "offline_browser_external_development",
+      "run_id": "5c742ee7be954052a4965e50c0ff804f",
+      "report": "artifacts/coordinator-v2-web-offline/coches-1/report.json",
+      "scenario": "coches_read_only",
+      "real_browser": true,
+      "models_simulated": true,
+      "strict_v2_tools": true,
+      "status": "unverified",
+      "stop_reason": "step_not_verified",
+      "verified": false,
+      "independent_outcome": {
+        "requested_items": 3,
+        "distinct_visited_items": 1,
+        "distinct_returned_items": 1,
+        "form_writes": 0,
+        "contact_submissions": 0
+      },
+      "metrics": {
+        "actions": 23,
+        "jev_calls": 28,
+        "jev_http_attempts": 0,
+        "text_calls": 0,
+        "supervisor_calls": 9,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 28,
+        "supervisor_phase_calls": {
+          "initialize": 1,
+          "audit": 1,
+          "review": 7
+        }
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0,
+      "paid_api_http_attempts": 0
+    },
+    {
+      "label": "offline_browser_external_filtered",
+      "run_id": "36e7ab293e5a45b5925abbee176f971d",
+      "report": "artifacts/coordinator-v2-web-filtered-offline-02/coches-1/report.json",
+      "scenario": "coches_read_only_filtered",
+      "real_browser": true,
+      "models_simulated": true,
+      "strict_v2_tools": true,
+      "status": "done",
+      "stop_reason": null,
+      "verified": true,
+      "filters_provided_by_initial_url": true,
+      "filter_outcomes": {
+        "bmw_z4": "verified",
+        "madrid": "verified",
+        "price_max": "verified"
+      },
+      "independent_outcome": {
+        "requested_items": 3,
+        "distinct_visited_items": 3,
+        "distinct_returned_items": 3,
+        "form_writes": 0,
+        "contact_submissions": 0
+      },
+      "metrics": {
+        "actions": 10,
+        "jev_calls": 18,
+        "jev_http_attempts": 0,
+        "text_calls": 0,
+        "supervisor_calls": 10,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 18,
+        "supervisor_phase_calls": {
+          "initialize": 1,
+          "audit": 1,
+          "review": 8
+        }
+      },
+      "feedback_pauses": 0,
+      "denied_actions": 0,
+      "paid_api_http_attempts": 0
+    }
+  ],
+  "provider_budget_check": {
+    "report": "artifacts/coordinator-v2-provider-budget.json",
+    "key_http_status": 200,
+    "credits_http_status": 200,
+    "has_positive_balance": true,
+    "key_limit_not_exhausted": true
+  },
+  "environment_attempts": [
+    {
+      "label": "offline_browser_external_filtered_environment_error",
+      "report": "artifacts/coordinator-v2-web-filtered-offline/coches-1/report.json",
+      "run_id": null,
+      "status": "error",
+      "error_type": "PermissionError",
+      "verified": false,
+      "browser_actions": 0,
+      "paid_api_http_attempts": 0
+    }
+  ]
+}

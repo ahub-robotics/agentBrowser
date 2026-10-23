@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Contextual label fixture</title>
+<style>
+  body { font: 16px sans-serif; }
+  li { margin: 8px; }
+  button { width: 28px; height: 28px; }
+  svg { width: 20px; height: 20px; }
+</style>
+<ul>
+<li class="mt-FilterBasicLegacy-multiSelectionItemWrapper mt-FilterBasicLegacy-multiSelectionItemWrapper--highlighted"><div class="mt-FilterBasicLegacy-multiSelectionItem"><div class="mt-FilterBasicLegacy-multiSelectionItemIconLabel"><div class="mt-FilterBasicLegacy-multiSelectionItemLabelWrapper"><p class="mt-FilterBasicLegacy-multiSelectionItemLabel">Z4</p></div></div><span class="sui-AtomCheckbox sui-AtomCheckbox--native-disabled sui-AtomCheckbox--size-medium"><input type="checkbox" id="291" name="291" readonly="" aria-checked="false" aria-hidden="true" value=""><button type="button" class="sui-AtomCheckbox--Icon sui-AtomCheckbox--Icon--medium" aria-pressed="false" aria-hidden="false" data-indeterminate="false"><span class="sui-AtomIcon sui-AtomIcon--size-medium sui-AtomIcon--color-currentColor sui-AtomIcon--design-filled"><span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm16 0H5v14h14V5Z"></path></svg></span></span></button></span></div></li>
+<li><span>X3</span><span><input type="checkbox" readonly aria-hidden="true"><button type="button" aria-pressed="false"></button></span></li>
+</ul>
+<script>
+  window.fixtureClicks = 0;
+  for (const button of document.querySelectorAll('button')) {
+    button.addEventListener('click', () => {
+      window.fixtureClicks++;
+      const checked = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(checked));
+      const input = button.closest('li').querySelector('input');
+      input.checked = checked;
+      input.setAttribute('aria-checked', String(checked));
+    });
+  }
+</script>
+</html>

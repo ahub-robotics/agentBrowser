@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-20",
+  "scope": "Optional sequential LangChain supervisor, persistent three-item browser loop and same-tab resumption",
+  "site": "https://www.coches.net/segunda-mano/",
+  "models": {
+    "supervisor": "simulated",
+    "jev": "simulated",
+    "text_helper": "simulated"
+  },
+  "paid_model_api_calls": 0,
+  "actual_llm_planning_quality_validated": false,
+  "independent_oracle": [
+    "Result-card link observed before visiting each advertisement",
+    "Exact expected message value read from the real DOM without submitting",
+    "Three distinct advertisement identities and a results-page return after each fill"
+  ],
+  "successful_attempt": "20261020-174201-148251",
+  "attempts": [
+    {
+      "source_report": "artifacts/supervised-coches-20261020-170144-569395/report.json",
+      "source_trace": "artifacts/supervised-coches-20261020-170144-569395/trace.json",
+      "agent_status": "waiting_feedback",
+      "stop_reason": "no_progress",
+      "independent_outcome": "unknown",
+      "verified_filled_advertisement_ids": [],
+      "verified_returned_advertisement_ids": [],
+      "resumed_after_verified_fill_on_same_tab": false,
+      "elapsed_active_ms": 3683,
+      "model_http_calls": 0,
+      "metrics": {
+        "actions": 14,
+        "jev_calls": 17,
+        "jev_http_attempts": 0,
+        "text_calls": 0,
+        "supervisor_calls": 5,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 17
+      },
+      "executed_operations_from_trace": {
+        "click": 1,
+        "scroll": 13
+      },
+      "independent_dom_observations": 20,
+      "contact_submissions": 0,
+      "notes": "The simulated policy did not recognize the observed Contacta con el anunciante textarea label. The raw same-tab flag does not validate resumption because no first fill was verified."
+    },
+    {
+      "source_report": "artifacts/supervised-coches-20261020-170939-084887/report.json",
+      "source_trace": "artifacts/supervised-coches-20261020-170939-084887/trace.json",
+      "agent_status": "waiting_feedback",
+      "stop_reason": "supervisor_context_budget",
+      "independent_outcome": "unknown",
+      "verified_filled_advertisement_ids": [
+        "71762926"
+      ],
+      "verified_returned_advertisement_ids": [
+        "71762926"
+      ],
+      "resumed_after_verified_fill_on_same_tab": true,
+      "elapsed_active_ms": 6830,
+      "model_http_calls": 0,
+      "metrics": {
+        "actions": 16,
+        "jev_calls": 19,
+        "jev_http_attempts": 0,
+        "text_calls": 1,
+        "supervisor_calls": 3,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 19
+      },
+      "executed_operations_from_trace": {
+        "click": 1,
+        "fill": 1,
+        "back": 2,
+        "scroll": 12
+      },
+      "independent_dom_observations": 23,
+      "contact_submissions": 0,
+      "notes": "The first message and return were verified; the result list changed on BACK and a previously reserved link was absent. The run stopped at the supervisor context budget."
+    },
+    {
+      "source_report": "artifacts/supervised-coches-20261020-174201-148251/report.json",
+      "source_trace": "artifacts/supervised-coches-20261020-174201-148251/trace.json",
+      "agent_status": "done",
+      "stop_reason": null,
+      "independent_outcome": "verified",
+      "verified_filled_advertisement_ids": [
+        "70767768",
+        "71587484",
+        "71646093"
+      ],
+      "verified_returned_advertisement_ids": [
+        "70767768",
+        "71587484",
+        "71646093"
+      ],
+      "resumed_after_verified_fill_on_same_tab": true,
+      "elapsed_active_ms": 8893,
+      "model_http_calls": 0,
+      "metrics": {
+        "actions": 12,
+        "jev_calls": 18,
+        "jev_http_attempts": 0,
+        "text_calls": 3,
+        "supervisor_calls": 7,
+        "supervisor_http_attempts": 0,
+        "candidate_windows": 18
+      },
+      "executed_operations_from_trace": {
+        "click": 3,
+        "fill": 3,
+        "back": 6
+      },
+      "independent_dom_observations": 22,
+      "contact_submissions": 0,
+      "notes": "The independent DOM oracle verified three distinct result-card destinations, exact message contents, and three returns. The run resumed on its original tab after the first verified fill."
+    }
+  ],
+  "startup_attempt_not_executed": {
+    "source_report": "artifacts/supervised-coches-20261020-165116-442364/report.json",
+    "reason": "filesystem_permission",
+    "browser_observations": 0,
+    "model_http_calls": 0
+  },
+  "limitations": [
+    "This is execution and persistence acceptance, not a model accuracy or reliability benchmark.",
+    "Active elapsed time excludes the restart pause and real model latency.",
+    "Raw local reports include page observations; this summary omits personal form contents.",
+    "The early raw resume flag is not counted as accepted resumption without a verified first fill."
+  ],
+  "full_suite_checks": {
+    "status": "passed",
+    "pytest": {
+      "passed": 550,
+      "failed": 0,
+      "paid_api_calls": 0
+    },
+    "ruff": "passed",
+    "node_check_app_js": "passed",
+    "node_check_snapshot_js": "passed",
+    "git_diff_check": "passed",
+    "uv_build": "passed"
+  }
+}

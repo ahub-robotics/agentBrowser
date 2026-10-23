@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-19",
+  "scope": "CS01 candidate budgets and explicit reconsultation",
+  "paid_model_api_calls": 0,
+  "checks": [
+    {
+      "command": "uv run pytest",
+      "chunk_id": "e67a69",
+      "wall_time_seconds": 0.685898,
+      "exit_code": 0,
+      "original_token_count": 336,
+      "output": "warning: `VIRTUAL_ENV=/Users/enriquecrespodebenito/Documents/LinkedinAgents/AgentRun/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n============================= test session starts ==============================\nplatform darwin -- Python 3.12.11, pytest-8.4.2, pluggy-1.6.0\nrootdir: /Users/enriquecrespodebenito/Documents/CodexProjects/AgentRun\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: langsmith-0.14.11, anyio-4.15.1\ncollected 121 items\n\ntests/test_agent.py ...............................                      [ 25%]\ntests/test_candidate_observation.py .....                                [ 29%]\ntests/test_candidate_ui.py ...                                           [ 32%]\ntests/test_candidate_workflow.py ...............                         [ 44%]\ntests/test_candidates.py ......................                          [ 62%]\ntests/test_cli.py ............                                           [ 72%]\ntests/test_config.py ...........                                         [ 81%]\ntests/test_runnables.py ........                                         [ 88%]\ntests/test_workflow.py ..............                                    [100%]\n\n============================= 121 passed in 0.50s ==============================\n"
+    },
+    {
+      "command": "uv run ruff check .",
+      "chunk_id": "23314e",
+      "wall_time_seconds": 0.000005833,
+      "exit_code": 0,
+      "original_token_count": 60,
+      "output": "warning: `VIRTUAL_ENV=/Users/enriquecrespodebenito/Documents/LinkedinAgents/AgentRun/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nAll checks passed!\n"
+    },
+    {
+      "command": "git diff --check",
+      "chunk_id": "194fc7",
+      "wall_time_seconds": 0.000005291,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check jev_ultrafast/static/app.js",
+      "chunk_id": "4db966",
+      "wall_time_seconds": 0.000004,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check jev_ultrafast/snapshot.js",
+      "chunk_id": "292f3e",
+      "wall_time_seconds": 0.000006917,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "command": "git diff --exit-code -- tests/test_agent.py",
+      "chunk_id": "808954",
+      "wall_time_seconds": 0.000005917,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "command": "uv run python scripts/check_guards.py",
+      "exit_code": 0,
+      "checks_passed": 21,
+      "provenance": "delegated Browser Harness execution"
+    },
+    {
+      "command": "uv run python scripts/check_candidate_observation.py",
+      "exit_code": 0,
+      "checks_passed": 11,
+      "provenance": "delegated Browser Harness execution",
+      "output": "1000-option select preserves later button and exact inventory counts\nfreshness reads preserve inventory, option identities and preview\npending option changes invalidate DOM and action freshness outside preview\nidentical pending option replacement invalidates its DOM identity\nduplicate labels and values select the exact second observed option\noption inspection stops at 5000 and declares unknown total\ncontrol inspection stops at 5000 and declares unknown total\nstructural region count is bounded to 32 plus residual\ncustom extraction limits are identical during observations and freshness\nunsupported frames are declared instead of claiming complete coverage\nreal Agent/LangGraph reaches option 36 after two consultations; one SELECT and four simulated calls\nPASS: 11 candidate observation checks; no paid model calls (4 simulated Jev calls)",
+      "workflow_evidence": {
+        "browser_actions": 1,
+        "candidate_controls": 2,
+        "model_calls": 4,
+        "paid_model_calls": 0,
+        "calls": [
+          {
+            "operation": "MORE_CANDIDATES",
+            "window_id": 1
+          },
+          {
+            "operation": "MORE_CANDIDATES",
+            "window_id": 2
+          },
+          {
+            "operation": "SELECT",
+            "window_id": 3
+          },
+          {
+            "operation": "DONE",
+            "window_id": 1
+          }
+        ],
+        "verified_dom": {
+          "events": {
+            "change": 1,
+            "input": 1
+          },
+          "selectedIndex": 36,
+          "value": "value36"
+        }
+      }
+    },
+    {
+      "command": "uv build",
+      "chunk_id": "e641a3",
+      "wall_time_seconds": 0.363691167,
+      "exit_code": 0,
+      "original_token_count": 45,
+      "output": "Building source distribution...\nBuilding wheel from source distribution...\nSuccessfully built dist/agentrun-0.1.0.tar.gz\nSuccessfully built dist/agentrun-0.1.0-py3-none-any.whl\n"
+    }
+  ]
+}

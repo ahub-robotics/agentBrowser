@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-21",
+  "scope": "Read-only saved-state diagnosis and console feedback with simulated supervisor; no contact-loop completion claim.",
+  "saved_replay_source": "artifacts/feedback-recovery-20261021/saved-replay.json",
+  "saved_replay": {
+    "source_run_id": "70d7656c2fc94bbf9ae2518e7cae8913",
+    "mode": "offline_checkpoint_replay_with_current_code",
+    "model_calls": 0,
+    "browser_inputs": 0,
+    "source_checkpoint_modified": false,
+    "retained_facts": 993,
+    "unique_observed_links": 49,
+    "advertisement_links_available_in_catalog": 14,
+    "items_registered_in_memory_only": 14,
+    "registration_and_next_delegation_validated": true,
+    "decision_source": "scripted_diagnostic_not_llm",
+    "available_actions": [
+      "delegate",
+      "finish",
+      "feedback"
+    ],
+    "feedback_reasons": [
+      "missing_user_information",
+      "provider_error"
+    ],
+    "payload_utf8_bytes": 68432,
+    "native_provider_error_cause_determined": false,
+    "full_contact_loop_verified": false
+  },
+  "request_history_size_comparison": {
+    "before_bytes": 47467,
+    "after_bytes": 19609,
+    "native_http_400_cause_determined": false
+  },
+  "live_console_validation": {
+    "status": "done",
+    "source_run_id": "70d7656c2fc94bbf9ae2518e7cae8913",
+    "diagnostic_run_id": "875615c27792462b863fa1232e6e7d86",
+    "same_existing_tab": true,
+    "same_run_through_feedback": true,
+    "same_tab_through_feedback": true,
+    "feedback_received": 1,
+    "input_waits": [
+      {
+        "wall_ms": 1586819,
+        "active_elapsed_change_ms": 0,
+        "same_run": true,
+        "same_tab": true
+      },
+      {
+        "wall_ms": 17730,
+        "active_elapsed_change_ms": 0,
+        "same_run": true,
+        "same_tab": true
+      }
+    ],
+    "waiting_excluded_from_active_time": true,
+    "wall_ms": 1604698,
+    "active_ms": 19,
+    "model_calls": 0,
+    "blocked_model_attempts": 0,
+    "browser_inputs": 0,
+    "blocked_browser_inputs": 0,
+    "simulated_supervisor_calls": 2,
+    "source_checkpoint_unchanged": true,
+    "independent_title": "14 Coches BMW Z4 nuevos, de segunda mano y km0 en Madrid | Coches.net",
+    "filter_outcomes": {
+      "bmw_z4": {
+        "status": "verified",
+        "evidence": {
+          "source": "search_heading",
+          "value": "14 Coches BMW Z4 nuevos, de segunda mano y km0 en Madrid"
+        }
+      },
+      "madrid": {
+        "status": "verified",
+        "evidence": {
+          "source": "search_heading",
+          "value": "14 Coches BMW Z4 nuevos, de segunda mano y km0 en Madrid"
+        }
+      },
+      "price_max": {
+        "status": "verified",
+        "evidence": {
+          "source": "explicit URL upper bound",
+          "parameter": "maxprice",
+          "value": "20000"
+        }
+      }
+    },
+    "tab_left_open": true,
+    "error_type": null,
+    "verified": true
+  },
+  "privacy": "No complete page contents, contact data, credentials, private filesystem paths or advertisement URLs copied here. Only the public search title and bounded filter evidence are retained.",
+  "live_console_source": "artifacts/feedback-recovery-20261021/live-console/report.json",
+  "timing_limitations": "Wall times include manual console and orchestration waiting. This is not a model-performance benchmark; the two waits each changed active elapsed time by zero milliseconds.",
+  "final_checks": {
+    "pytest": {
+      "command": "uv run pytest",
+      "passed": 681,
+      "duration_seconds": 5.11,
+      "paid_apis": false
+    },
+    "ruff": "passed",
+    "javascript_syntax": {
+      "static/app.js": "passed",
+      "snapshot.js": "passed"
+    },
+    "diff_check": "passed",
+    "build": "passed"
+  }
+}

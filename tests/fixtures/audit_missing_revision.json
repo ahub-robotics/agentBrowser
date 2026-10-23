@@ -1,0 +1,410 @@
+{
+  "source_run_id": "b687921304454da1996c1f4689f437ae",
+  "goal": "Accept cookies if exists. Type Volvo XC60, select the model XC60 and press Aceptar in the model panel. In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel. Filter maximum price to 50.000 €. Click Show Results and wait for the results panel. For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+  "responses": [
+    {
+      "event_id": "dc13c173ec064971b4d6bd9f6434597d:11",
+      "response": {
+        "contract": {
+          "execution_constraints": [
+            "The optional cookie action applies only if a cookie-acceptance prompt is observed in the usable current page.",
+            "Use the model value Volvo XC60 and selected model XC60 when the scheduled model step requests them.",
+            "Use province value Valladolid when the scheduled province step requests it.",
+            "Use maximum price 50.000 € when the scheduled maximum-price step requests it.",
+            "Process no more than the first 10 distinct results, preserving observed order and including further pages when needed."
+          ],
+          "loops": [
+            {
+              "depends_on": [
+                "show_results"
+              ],
+              "description": "Process the first ten distinct advertisements in observed result order, traversing further result pages as needed. Each advertisement is complete only after favourite submission is positively verified, followed by a return to the results page.",
+              "discovery": {
+                "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+                "id": "discover_results",
+                "instruction": "Observe the results list and expose relevant advertisement links through bounded page observations, scrolling, and pagination as needed until ten distinct results have been registered or the available result scope is exhausted.",
+                "requirement_ids": [
+                  "favourites_first_ten"
+                ],
+                "success_criteria": [
+                  "Relevant distinct advertisement links in observed order are supplied, including from further pages when needed; discovery coverage supports exhaustion only when the requested scope is covered."
+                ],
+                "verification_scope": "current"
+              },
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "advertisements",
+              "limit": 10,
+              "order": "observed",
+              "requirement_ids": [
+                "favourites_first_ten"
+              ],
+              "steps": [
+                {
+                  "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+                  "id": "favourite_ad",
+                  "instruction": "Open this advertisement, add it to favourites, and positively verify the favourite submission before treating this advertisement as completed.",
+                  "requirement_ids": [
+                    "favourites_first_ten"
+                  ],
+                  "success_criteria": [
+                    "This advertisement is open.",
+                    "The favourite submission is positively verified for this advertisement."
+                  ],
+                  "verification_scope": "destination"
+                },
+                {
+                  "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+                  "id": "return_results",
+                  "instruction": "Return to the results page and verify that the results listing is present so processing can continue with the next advertisement not yet completed.",
+                  "requirement_ids": [
+                    "favourites_first_ten"
+                  ],
+                  "success_criteria": [
+                    "The results page is present after returning from this advertisement."
+                  ],
+                  "verification_scope": "current"
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "description": "Accept the cookie prompt only if it is observed in the usable current page; if no prompt is observed, take no cookie action and continue.",
+              "evidence_refs": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie_optional",
+              "status": "unknown"
+            },
+            {
+              "description": "Configure the model filter by typing Volvo XC60, selecting model XC60, and pressing Aceptar in the model panel.",
+              "evidence_refs": [],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model_choice",
+              "status": "unknown"
+            },
+            {
+              "description": "Configure the province filter by typing and selecting Valladolid, then pressing Aceptar in the provincias panel.",
+              "evidence_refs": [],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province_choice",
+              "status": "unknown"
+            },
+            {
+              "description": "Set the maximum price filter to 50.000 €.",
+              "evidence_refs": [],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "max_price",
+              "status": "unknown"
+            },
+            {
+              "description": "Submit the configured search using Show Results and wait until the results panel is observed.",
+              "evidence_refs": [],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "results_panel",
+              "status": "unknown"
+            },
+            {
+              "description": "For the first ten distinct result advertisements in observed order across further pages as needed, open each, add it to favourites, verify the submission before considering that advertisement complete, then return to results and continue with the next not-yet-completed advertisement.",
+              "evidence_refs": [],
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "favourites_first_ten",
+              "status": "unknown"
+            }
+          ],
+          "tasks": [
+            {
+              "depends_on": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie",
+              "instruction": "If a cookie-acceptance prompt is observed in the usable current page, accept it. If no prompt is observed, take no optional cookie action and proceed.",
+              "requirement_ids": [
+                "cookie_optional"
+              ],
+              "success_criteria": [
+                "When an acceptance prompt is observed, acceptance is positively confirmed; when no prompt is observed, no optional action is required."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "cookie"
+              ],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model",
+              "instruction": "In the model panel, type Volvo XC60, select model XC60, and press Aceptar; verify that the model filter is applied.",
+              "requirement_ids": [
+                "model_choice"
+              ],
+              "success_criteria": [
+                "The model panel confirms selection XC60 and the applied model filter is Volvo XC60/XC60."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "model"
+              ],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province",
+              "instruction": "In the provincias panel, type Valladolid, select Valladolid, and press Aceptar; verify that the province filter is applied.",
+              "requirement_ids": [
+                "province_choice"
+              ],
+              "success_criteria": [
+                "The applied province filter is Valladolid."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "province"
+              ],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "price",
+              "instruction": "Set the maximum price filter to 50.000 € and verify the applied maximum.",
+              "requirement_ids": [
+                "max_price"
+              ],
+              "success_criteria": [
+                "The applied maximum price is 50.000 €."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "price"
+              ],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "show_results",
+              "instruction": "Click Show Results and wait for the results panel to load; verify the results panel is present.",
+              "requirement_ids": [
+                "results_panel"
+              ],
+              "success_criteria": [
+                "The results panel is observed after loading."
+              ],
+              "verification_scope": "current"
+            }
+          ],
+          "version": 2
+        },
+        "contract_version": 2,
+        "phase": "initialize"
+      }
+    },
+    {
+      "event_id": "dc13c173ec064971b4d6bd9f6434597d:21",
+      "response": {
+        "approved": false,
+        "contract_version": 2,
+        "phase": "audit",
+        "problems": [
+          "The goal explicitly requires opening each of the first ten advertisements, adding to favourites, verifying the submission, then returning to the results page. The loop's separate return step is ordered correctly, but the advertisement step success criteria do not explicitly require submission verification before completion, nor that only a positively verified advertisement is treated as completed; make that postcondition explicit.",
+          "Discovery says continue until ten distinct results are registered or scope exhausted, but the loop limit of 10 is valid; ensure exhaustion and processing are not conflated. The current discovery success criteria only vaguely state coverage supports exhaustion, without positively requiring coverage evidence for the full available scope when fewer than ten results are found."
+        ],
+        "replacement_contract": {
+          "execution_constraints": [
+            "The optional cookie action applies only if a cookie-acceptance prompt is observed in the usable current page.",
+            "Use the model value Volvo XC60 and selected model XC60 when the scheduled model step requests them.",
+            "Use province value Valladolid when the scheduled province step requests it.",
+            "Use maximum price 50.000 € when the scheduled maximum-price step requests it.",
+            "Process no more than the first 10 distinct results, preserving observed order and including further pages when needed."
+          ],
+          "loops": [
+            {
+              "depends_on": [
+                "show_results"
+              ],
+              "description": "Process at most the first ten distinct advertisements in observed result order, traversing further pages as needed. Each item's favourite submission must be positively verified before the item is considered complete; return to results before continuing.",
+              "discovery": {
+                "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed:",
+                "id": "discover_results",
+                "instruction": "Observe the results list and expose relevant advertisement links through bounded page observations, scrolling, and pagination as needed. Stop discovery after ten distinct relevant results are observed. If fewer than ten are found, continue discovery across further pages as needed and mark exhaustion only with positive evidence that the full available result scope has been covered.",
+                "requirement_ids": [
+                  "favourites_first_ten"
+                ],
+                "success_criteria": [
+                  "Supply relevant distinct advertisement links in observed order, including further pages when needed.",
+                  "If ten distinct results are observed, discovery may stop at ten; if fewer are observed, declare exhaustion only with positive evidence covering the full available result scope."
+                ],
+                "verification_scope": "current"
+              },
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "advertisements",
+              "limit": 10,
+              "order": "observed",
+              "requirement_ids": [
+                "favourites_first_ten"
+              ],
+              "steps": [
+                {
+                  "goal_quote": "open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+                  "id": "favourite_ad",
+                  "instruction": "Open this advertisement, add it to favourites, and positively verify the favourite submission. Do not treat this advertisement as completed unless the submission is verified.",
+                  "requirement_ids": [
+                    "favourites_first_ten"
+                  ],
+                  "success_criteria": [
+                    "This advertisement is open at its destination.",
+                    "The favourite submission for this advertisement is positively verified before it is considered completed."
+                  ],
+                  "verification_scope": "destination"
+                },
+                {
+                  "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+                  "id": "return_results",
+                  "instruction": "Return to the results page and verify that the results listing is present so processing can continue with the next advertisement not yet completed.",
+                  "requirement_ids": [
+                    "favourites_first_ten"
+                  ],
+                  "success_criteria": [
+                    "The results page is present after returning from this advertisement."
+                  ],
+                  "verification_scope": "current"
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "description": "Accept the cookie prompt only if it is observed in the usable current page; if no prompt is observed, take no cookie action and continue.",
+              "evidence_refs": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie_optional",
+              "status": "unknown"
+            },
+            {
+              "description": "Configure the model filter by typing Volvo XC60, selecting model XC60, and pressing Aceptar in the model panel.",
+              "evidence_refs": [],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model_choice",
+              "status": "unknown"
+            },
+            {
+              "description": "Configure the province filter by typing and selecting Valladolid, then pressing Aceptar in the provincias panel.",
+              "evidence_refs": [],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province_choice",
+              "status": "unknown"
+            },
+            {
+              "description": "Set the maximum price filter to 50.000 €.",
+              "evidence_refs": [],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "max_price",
+              "status": "unknown"
+            },
+            {
+              "description": "Submit the configured search using Show Results and wait until the results panel is observed.",
+              "evidence_refs": [],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "results_panel",
+              "status": "unknown"
+            },
+            {
+              "description": "Process the first ten distinct advertisements in observed result order across further pages as needed, verifying each favourite submission before completion and returning to the results page between advertisements.",
+              "evidence_refs": [],
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "favourites_first_ten",
+              "status": "unknown"
+            }
+          ],
+          "tasks": [
+            {
+              "depends_on": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie",
+              "instruction": "If a cookie-acceptance prompt is observed in the usable current page, accept it. If no prompt is observed, take no optional cookie action and proceed.",
+              "requirement_ids": [
+                "cookie_optional"
+              ],
+              "success_criteria": [
+                "When an acceptance prompt is observed, acceptance is positively confirmed; when no prompt is observed, no optional action is required."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "cookie"
+              ],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model",
+              "instruction": "In the model panel, type Volvo XC60, select model XC60, and press Aceptar; verify that the model filter is applied.",
+              "requirement_ids": [
+                "model_choice"
+              ],
+              "success_criteria": [
+                "The model panel confirms selection XC60 and the applied model filter is Volvo XC60/XC60."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "model"
+              ],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province",
+              "instruction": "In the provincias panel, type Valladolid, select Valladolid, and press Aceptar; verify that the province filter is applied.",
+              "requirement_ids": [
+                "province_choice"
+              ],
+              "success_criteria": [
+                "The applied province filter is Valladolid."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "province"
+              ],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "price",
+              "instruction": "Set the maximum price filter to 50.000 € and verify the applied maximum.",
+              "requirement_ids": [
+                "max_price"
+              ],
+              "success_criteria": [
+                "The applied maximum price is 50.000 €."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "price"
+              ],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "show_results",
+              "instruction": "Click Show Results and wait for the results panel to load; verify the results panel is present.",
+              "requirement_ids": [
+                "results_panel"
+              ],
+              "success_criteria": [
+                "The results panel is observed after loading."
+              ],
+              "verification_scope": "current"
+            }
+          ],
+          "version": 2
+        }
+      }
+    },
+    {
+      "event_id": "dc13c173ec064971b4d6bd9f6434597d:32",
+      "response": {
+        "approved": false,
+        "contract_version": 2,
+        "phase": "audit",
+        "problems": [
+          "The price task combines setting the maximum-price filter with no other outcome, fine; but distinct independently configured model, province, and price tasks are properly ordered.",
+          "The cookie task is an optional action but dependent tasks can proceed if no prompt is seen; its success criteria permit no prompt without claiming global absence.",
+          "The loop incorrectly uses limit=10. The original specifies the first 10 distinct results, so this is explicitly bounded—valid.",
+          "The loop instructions and requirements conflate the repeated favourite work with its mandatory return to results; task steps already separate these actions correctly.",
+          "Goal constraint: verify submission before marking each advertisement completed. The plan states verified submission before considered complete, satisfactory.",
+          "Concrete defect: loop discovery says to stop at ten relevant results, but the requested scope is the first ten distinct results in observed order. It must permit pagination and discovery sufficiently to identify the first ten in order; as phrased it does, so no defect.",
+          "Concrete defect: the model success criterion incorrectly requires applied model to be Volvo XC60/XC60, an ambiguous dual value; goal says type Volvo XC60 and select model XC60. Verify selected XC60 and applied filter as appropriate without implying a literal combined value beyond evidence."
+        ],
+        "replacement_contract": null
+      }
+    }
+  ]
+}

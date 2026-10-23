@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "site": "https://www.coches.net/",
+  "method": "Manual reproduction through Browser.observe and Browser.act in an owned Chrome tab; no model inference",
+  "model_calls": 0,
+  "browser_actions": [
+    {"operation": "CLICK", "label": "Marca y modelo"},
+    {"operation": "TYPE_TEXT", "label": "Buscar por palabras", "text": "BMW Z4"},
+    {"operation": "CLICK", "label": "Z4"},
+    {"operation": "CLICK", "label": "Aceptar"}
+  ],
+  "before_confirmation": {
+    "Z4_pressed": "true",
+    "accept_in_inventory": true,
+    "accept_in_window_actions": true,
+    "prepared_click_target": {"13": {"element": "[13] Aceptar", "current_value": "", "role": "button"}},
+    "window_id": 1,
+    "nodes_admitted": 27
+  },
+  "after_confirmation": {
+    "accept_absent_from_visible_actions": true,
+    "model_filter_button_label": "BMW Z4",
+    "results_button_label": "Mostrar 180 resultados"
+  },
+  "limits": "This confirms observation, candidate inclusion and execution in the reproduced state. It does not identify the failed run's model decision or measure the revised instructions' effectiveness with Jev."
+}

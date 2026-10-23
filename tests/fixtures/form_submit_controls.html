@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Native form submission controls</title>
+<style>
+  body { margin: 20px; font: 16px sans-serif; }
+  form, p { margin: 10px 0; }
+  button, input, [role=button] { min-width: 85px; min-height: 32px; }
+  [role=button] { display: inline-block; }
+</style>
+<h1>Native form submission controls</h1>
+<form id="first" onsubmit="event.preventDefault(); window.submissions.push('first')">
+  <button id="implicit" aria-expanded="false">Implicit submit</button>
+  <button id="opener" type="button" aria-expanded="false">Open panel</button>
+  <button type="reset">Reset form</button>
+  <input type="submit" value="Input submit">
+  <input id="image" type="image" aria-label="Image submit" width="85" height="32"
+         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='85' height='32'%3E%3Crect width='85' height='32' fill='silver'/%3E%3C/svg%3E">
+  <button form="missing">Missing owner</button>
+</form>
+<form id="second" onsubmit="event.preventDefault(); window.submissions.push('second')"></form>
+<p>
+  <button id="external" form="first" aria-expanded="false">External submit</button>
+  <button>Standalone button</button>
+  <input type="submit" value="Standalone input">
+  <span role="button" aria-expanded="false" form="first">Custom disclosure</span>
+</p>
+<script>window.submissions = [];</script>

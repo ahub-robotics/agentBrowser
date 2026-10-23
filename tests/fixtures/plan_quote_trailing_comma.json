@@ -1,0 +1,402 @@
+{
+  "source_run_id": "86dc5ad2bb97456fa539bb9f069578c1",
+  "responses": [
+    {
+      "source_event_id": "da30f9f28710413e86696ef2d733a9df:11",
+      "response": {
+        "contract": {
+          "execution_constraints": [],
+          "loops": [
+            {
+              "depends_on": [
+                "submit-search"
+              ],
+              "description": "Process the first ten distinct results in observed order, discovering further pages as needed, verify each favourite submission before completion, and return to results between advertisements.",
+              "discovery": {
+                "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites,",
+                "id": "discover-results",
+                "instruction": "Observe relevant advertisement links in the results listing in order. Use bounded scrolling or navigation to expose additional relevant results and further results pages as needed, without processing or submitting any advertisement.",
+                "requirement_ids": [
+                  "favourites"
+                ],
+                "success_criteria": [
+                  "Relevant distinct advertisement links are observed and registered in observed order.",
+                  "Discovery covers the first ten distinct results, including further pages as needed."
+                ],
+                "verification_scope": "current"
+              },
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "process-first-ten",
+              "limit": 10,
+              "order": "observed",
+              "requirement_ids": [
+                "favourites",
+                "return"
+              ],
+              "steps": [
+                {
+                  "goal_quote": "open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+                  "id": "favourite-ad",
+                  "instruction": "Open this advertisement, add it to favourites, and positively verify the favourite submission at the advertisement destination before marking it complete.",
+                  "requirement_ids": [
+                    "favourites"
+                  ],
+                  "success_criteria": [
+                    "The advertisement destination is observed.",
+                    "Favourite submission is positively verified at the destination."
+                  ],
+                  "verification_scope": "destination"
+                },
+                {
+                  "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+                  "id": "return-to-results",
+                  "instruction": "Go back to the results page after verifying the favourite submission.",
+                  "requirement_ids": [
+                    "return"
+                  ],
+                  "success_criteria": [
+                    "The results page is positively observed after returning from the advertisement."
+                  ],
+                  "verification_scope": "current"
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "description": "Accept a cookie prompt only if one is observed in the usable current page.",
+              "evidence_refs": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookies",
+              "status": "unknown"
+            },
+            {
+              "description": "Enter Volvo XC60 as search text, select model XC60, and confirm with Aceptar in the model panel.",
+              "evidence_refs": [],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model",
+              "status": "unknown"
+            },
+            {
+              "description": "Enter Valladolid in Provincia, select Valladolid, and confirm with Aceptar in the provincias panel.",
+              "evidence_refs": [],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province",
+              "status": "unknown"
+            },
+            {
+              "description": "Set the maximum-price filter to 50.000 €.",
+              "evidence_refs": [],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "price",
+              "status": "unknown"
+            },
+            {
+              "description": "Submit the configured search using Show Results and positively verify the results panel appears.",
+              "evidence_refs": [],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "results",
+              "status": "unknown"
+            },
+            {
+              "description": "For each of the first ten distinct observed results in order, including further pages as needed, open its advertisement, add it to favourites and verify the submission before treating the advertisement as complete.",
+              "evidence_refs": [],
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+              "id": "favourites",
+              "status": "unknown"
+            },
+            {
+              "description": "After verifying an advertisement's favourite submission, return to the results page and proceed with the next not-yet-completed advertisement.",
+              "evidence_refs": [],
+              "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "return",
+              "status": "unknown"
+            }
+          ],
+          "tasks": [
+            {
+              "depends_on": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie-prerequisite",
+              "instruction": "If a cookie prompt is observed in the usable current page, accept it. If none is observed, take no cookie action and proceed.",
+              "requirement_ids": [
+                "cookies"
+              ],
+              "success_criteria": [
+                "Observed cookie prompt is accepted, or no prompt is observed in the usable current page and no cookie action is taken."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "cookie-prerequisite"
+              ],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "configure-model",
+              "instruction": "In the model panel, type Volvo XC60, select the XC60 model option, and press Aceptar. Verify the confirmed selection.",
+              "requirement_ids": [
+                "model"
+              ],
+              "success_criteria": [
+                "Typed search text is Volvo XC60.",
+                "Selected option is model XC60.",
+                "The panel confirms acceptance with Aceptar."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-model"
+              ],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "configure-province",
+              "instruction": "In the provincias panel, type Valladolid in Provincia, select Valladolid, and press Aceptar. Verify the confirmed selection.",
+              "requirement_ids": [
+                "province"
+              ],
+              "success_criteria": [
+                "Typed search text is Valladolid.",
+                "Selected option is Valladolid.",
+                "The provincias panel confirms acceptance with Aceptar."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-province"
+              ],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "configure-price",
+              "instruction": "Set the maximum price filter to 50.000 € and verify the configured maximum.",
+              "requirement_ids": [
+                "price"
+              ],
+              "success_criteria": [
+                "Maximum price is configured as 50.000 €."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-price"
+              ],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "submit-search",
+              "instruction": "Click Show Results and wait for the results panel; verify the results panel is displayed.",
+              "requirement_ids": [
+                "results"
+              ],
+              "success_criteria": [
+                "Show Results was activated.",
+                "Results panel is positively observed."
+              ],
+              "verification_scope": "current"
+            }
+          ],
+          "version": 2
+        },
+        "contract_version": 2,
+        "phase": "initialize"
+      }
+    },
+    {
+      "source_event_id": "da30f9f28710413e86696ef2d733a9df:21",
+      "response": {
+        "contract": {
+          "execution_constraints": [],
+          "loops": [
+            {
+              "depends_on": [
+                "submit-search"
+              ],
+              "description": "Process the first ten distinct results in observed order, discovering further pages as needed, verify each favourite submission before completion, and return to results between advertisements.",
+              "discovery": {
+                "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites,",
+                "id": "discover-results",
+                "instruction": "Observe relevant advertisement links in the results listing in order. Use bounded scrolling or navigation to expose additional relevant results and further results pages as needed, without processing or submitting any advertisement.",
+                "requirement_ids": [
+                  "favourites"
+                ],
+                "success_criteria": [
+                  "Relevant distinct advertisement links are observed and registered in observed order.",
+                  "Discovery covers the first ten distinct results, including further pages as needed."
+                ],
+                "verification_scope": "current"
+              },
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "process-first-ten",
+              "limit": 10,
+              "order": "observed",
+              "requirement_ids": [
+                "favourites",
+                "return"
+              ],
+              "steps": [
+                {
+                  "goal_quote": "open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+                  "id": "favourite-ad",
+                  "instruction": "Open this advertisement, add it to favourites, and positively verify the favourite submission at the advertisement destination before marking it complete.",
+                  "requirement_ids": [
+                    "favourites"
+                  ],
+                  "success_criteria": [
+                    "The advertisement destination is observed.",
+                    "Favourite submission is positively verified at the destination."
+                  ],
+                  "verification_scope": "destination"
+                },
+                {
+                  "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+                  "id": "return-to-results",
+                  "instruction": "Go back to the results page after verifying the favourite submission.",
+                  "requirement_ids": [
+                    "return"
+                  ],
+                  "success_criteria": [
+                    "The results page is positively observed after returning from the advertisement."
+                  ],
+                  "verification_scope": "current"
+                }
+              ]
+            }
+          ],
+          "requirements": [
+            {
+              "description": "Accept a cookie prompt only if one is observed in the usable current page.",
+              "evidence_refs": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookies",
+              "status": "unknown"
+            },
+            {
+              "description": "Enter Volvo XC60 as search text, select model XC60, and confirm with Aceptar in the model panel.",
+              "evidence_refs": [],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "model",
+              "status": "unknown"
+            },
+            {
+              "description": "Enter Valladolid in Provincia, select Valladolid, and confirm with Aceptar in the provincias panel.",
+              "evidence_refs": [],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "province",
+              "status": "unknown"
+            },
+            {
+              "description": "Set the maximum-price filter to 50.000 €.",
+              "evidence_refs": [],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "price",
+              "status": "unknown"
+            },
+            {
+              "description": "Submit the configured search using Show Results and positively verify the results panel appears.",
+              "evidence_refs": [],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "results",
+              "status": "unknown"
+            },
+            {
+              "description": "For each of the first ten distinct observed results in order, including further pages as needed, open its advertisement, add it to favourites and verify the submission before treating the advertisement as complete.",
+              "evidence_refs": [],
+              "goal_quote": "For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed.",
+              "id": "favourites",
+              "status": "unknown"
+            },
+            {
+              "description": "After verifying an advertisement's favourite submission, return to the results page and proceed with the next not-yet-completed advertisement.",
+              "evidence_refs": [],
+              "goal_quote": "Go back to the results page and continue with the next advertisement not yet completed.",
+              "id": "return",
+              "status": "unknown"
+            }
+          ],
+          "tasks": [
+            {
+              "depends_on": [],
+              "goal_quote": "Accept cookies if exists.",
+              "id": "cookie-prerequisite",
+              "instruction": "If a cookie prompt is observed in the usable current page, accept it. If none is observed, take no cookie action and proceed.",
+              "requirement_ids": [
+                "cookies"
+              ],
+              "success_criteria": [
+                "Observed cookie prompt is accepted, or no prompt is observed in the usable current page and no cookie action is taken."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "cookie-prerequisite"
+              ],
+              "goal_quote": "Type Volvo XC60, select the model XC60 and press Aceptar in the model panel.",
+              "id": "configure-model",
+              "instruction": "In the model panel, type Volvo XC60, select the XC60 model option, and press Aceptar. Verify the confirmed selection.",
+              "requirement_ids": [
+                "model"
+              ],
+              "success_criteria": [
+                "Typed search text is Volvo XC60.",
+                "Selected option is model XC60.",
+                "The panel confirms acceptance with Aceptar."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-model"
+              ],
+              "goal_quote": "In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel.",
+              "id": "configure-province",
+              "instruction": "In the provincias panel, type Valladolid in Provincia, select Valladolid, and press Aceptar. Verify the confirmed selection.",
+              "requirement_ids": [
+                "province"
+              ],
+              "success_criteria": [
+                "Typed search text is Valladolid.",
+                "Selected option is Valladolid.",
+                "The provincias panel confirms acceptance with Aceptar."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-province"
+              ],
+              "goal_quote": "Filter maximum price to 50.000 €.",
+              "id": "configure-price",
+              "instruction": "Set the maximum price filter to 50.000 € and verify the configured maximum.",
+              "requirement_ids": [
+                "price"
+              ],
+              "success_criteria": [
+                "Maximum price is configured as 50.000 €."
+              ],
+              "verification_scope": "current"
+            },
+            {
+              "depends_on": [
+                "configure-price"
+              ],
+              "goal_quote": "Click Show Results and wait for the results panel.",
+              "id": "submit-search",
+              "instruction": "Click Show Results and wait for the results panel; verify the results panel is displayed.",
+              "requirement_ids": [
+                "results"
+              ],
+              "success_criteria": [
+                "Show Results was activated.",
+                "Results panel is positively observed."
+              ],
+              "verification_scope": "current"
+            }
+          ],
+          "version": 2
+        },
+        "contract_version": 2,
+        "phase": "initialize"
+      }
+    }
+  ],
+  "goal": "Accept cookies if exists. Type Volvo XC60, select the model XC60 and press Aceptar in the model panel. In Provincia type Valladolid, select Valladolid and press Aceptar in the provincias panel. Filter maximum price to 50.000 €. Click Show Results and wait for the results panel. For the first 10 distinct results in the observed order, including further pages when needed: open the advertisement, add to favourites Verify the submission before marking that advertisement completed. Go back to the results page and continue with the next advertisement not yet completed."
+}

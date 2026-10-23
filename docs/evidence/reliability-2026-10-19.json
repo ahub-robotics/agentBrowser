@@ -1,0 +1,973 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "scope": "Recorded iterative reliability checks through all 13 live coches.net runs in this update; no new API calls were made to compile this evidence.",
+  "notes": [
+    "Runs used changing implementation, prompts and reviewer models. These are debugging records, not a fixed-version accuracy benchmark.",
+    "Agent status and independently checked website outcomes are separate. DONE alone is not proof of success.",
+    "Counts and elapsed times are retained as reported; HTTP attempts are not assumed to equal successful model assessments.",
+    "Missing model metadata means unrecorded, not that no call occurred. Probe provider failures are separated from returned assessments.",
+    "References point to local ignored artifacts. No credentials, personal page data, raw page payloads or full model payloads are copied here.",
+    "Run 13 ended DONE and all four website outcomes were independently verified. Run 7 also met all four independent criteria but ended unverified."
+  ],
+  "baseline": {
+    "trace": "artifacts/filter-run-20261019-131457/trace.jsonl",
+    "agent_status": "blocked",
+    "stop_reason": "extraction_incomplete",
+    "counts": {
+      "decisions": 17,
+      "browser_actions": 9,
+      "text_calls": 1,
+      "decision_http_attempts": null,
+      "verification_calls": 0,
+      "preinput_stale_rejections": 7
+    },
+    "models": {
+      "decision_requested": [
+        "jev-latest"
+      ],
+      "decision_reported": [],
+      "text_reported": [
+        "openai/gpt-4.1-mini"
+      ]
+    },
+    "independent_dom_findings": {
+      "final_document_is_search_page": true,
+      "applied_url_filter_parameters": [
+        "MakeIds[0]",
+        "ModelIds[0]",
+        "hasPhoto"
+      ],
+      "province_parameter_present": false,
+      "maximum_price_parameter_present": false,
+      "final_text_empty": true
+    },
+    "note": "The newer four-criterion independent verifier was not run for this baseline. Missing HTTP or response-model metadata is unknown, not zero."
+  },
+  "live_summary": {
+    "run_count": 13,
+    "counts_total": {
+      "decisions": 178,
+      "decision_http_attempts": 178,
+      "text_calls": 12,
+      "verification_calls": 120,
+      "verification_http_attempts": 120,
+      "browser_actions": 90,
+      "candidate_windows": 178
+    },
+    "agent_status_counts": {
+      "unverified": 9,
+      "predicted": 2,
+      "blocked": 1,
+      "done": 1
+    },
+    "independent_outcome_counts": {
+      "unknown": 9,
+      "verified": 2,
+      "failed": 2
+    },
+    "independently_verified_all_four": [
+      "coches-validation-20261019-150030-960401",
+      "coches-validation-20261019-181220-231274"
+    ],
+    "agent_done_runs": [
+      "coches-validation-20261019-181220-231274"
+    ]
+  },
+  "live_runs": [
+    {
+      "run": "coches-validation-20261019-143036-965878",
+      "report": "artifacts/coches-validation-20261019-143036-965878/report.json",
+      "trace": "artifacts/coches-validation-20261019-143036-965878/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 0,
+      "counts": {
+        "decisions": 1,
+        "decision_http_attempts": 1,
+        "text_calls": 0,
+        "verification_calls": 1,
+        "verification_http_attempts": 1,
+        "browser_actions": 0,
+        "candidate_windows": 1
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": []
+      },
+      "recorded_review_results": 0,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-143234-398567",
+      "report": "artifacts/coches-validation-20261019-143234-398567/report.json",
+      "trace": "artifacts/coches-validation-20261019-143234-398567/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 4221,
+      "counts": {
+        "decisions": 2,
+        "decision_http_attempts": 2,
+        "text_calls": 0,
+        "verification_calls": 1,
+        "verification_http_attempts": 1,
+        "browser_actions": 0,
+        "candidate_windows": 2
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 1,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-144309-912534",
+      "report": "artifacts/coches-validation-20261019-144309-912534/report.json",
+      "trace": "artifacts/coches-validation-20261019-144309-912534/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 11601,
+      "counts": {
+        "decisions": 3,
+        "decision_http_attempts": 3,
+        "text_calls": 0,
+        "verification_calls": 3,
+        "verification_http_attempts": 3,
+        "browser_actions": 2,
+        "candidate_windows": 3
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 3,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-145239-455899",
+      "report": "artifacts/coches-validation-20261019-145239-455899/report.json",
+      "trace": "artifacts/coches-validation-20261019-145239-455899/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 5369,
+      "counts": {
+        "decisions": 2,
+        "decision_http_attempts": 2,
+        "text_calls": 0,
+        "verification_calls": 1,
+        "verification_http_attempts": 1,
+        "browser_actions": 0,
+        "candidate_windows": 2
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 1,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-145418-096646",
+      "report": "artifacts/coches-validation-20261019-145418-096646/report.json",
+      "trace": "artifacts/coches-validation-20261019-145418-096646/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 12388,
+      "counts": {
+        "decisions": 2,
+        "decision_http_attempts": 2,
+        "text_calls": 0,
+        "verification_calls": 2,
+        "verification_http_attempts": 2,
+        "browser_actions": 0,
+        "candidate_windows": 2
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 2,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-145553-988839",
+      "report": "artifacts/coches-validation-20261019-145553-988839/report.json",
+      "trace": "artifacts/coches-validation-20261019-145553-988839/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_invalid_response",
+      "error": null,
+      "reported_elapsed_ms": 29545,
+      "counts": {
+        "decisions": 7,
+        "decision_http_attempts": 7,
+        "text_calls": 1,
+        "verification_calls": 6,
+        "verification_http_attempts": 6,
+        "browser_actions": 4,
+        "candidate_windows": 7
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 6,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-150030-960401",
+      "report": "artifacts/coches-validation-20261019-150030-960401/report.json",
+      "trace": "artifacts/coches-validation-20261019-150030-960401/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_budget",
+      "error": null,
+      "reported_elapsed_ms": 144992,
+      "counts": {
+        "decisions": 35,
+        "decision_http_attempts": 35,
+        "text_calls": 2,
+        "verification_calls": 24,
+        "verification_http_attempts": 24,
+        "browser_actions": 19,
+        "candidate_windows": 35
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 24,
+      "independent_outcome": {
+        "status": "verified",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "verified"
+        },
+        "verified_count": 4,
+        "criterion_count": 4
+      },
+      "note": "All four website outcomes were independently verified; the agent still ended unverified."
+    },
+    {
+      "run": "coches-validation-20261019-150911-746099",
+      "report": "artifacts/coches-validation-20261019-150911-746099/report.json",
+      "trace": "artifacts/coches-validation-20261019-150911-746099/trace.jsonl",
+      "agent_status": "predicted",
+      "stop_reason": null,
+      "error": {
+        "type": "RuntimeError",
+        "code": "cdp_session_lost",
+        "message": "Session with given id not found."
+      },
+      "reported_elapsed_ms": 114181,
+      "counts": {
+        "decisions": 38,
+        "decision_http_attempts": 38,
+        "text_calls": 2,
+        "verification_calls": 18,
+        "verification_http_attempts": 18,
+        "browser_actions": 12,
+        "candidate_windows": 38
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 17,
+      "independent_outcome": {
+        "status": "failed",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "unknown",
+          "first_result": "failed"
+        },
+        "verified_count": 2,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-152020-070696",
+      "report": "artifacts/coches-validation-20261019-152020-070696/report.json",
+      "trace": "artifacts/coches-validation-20261019-152020-070696/trace.jsonl",
+      "agent_status": "blocked",
+      "stop_reason": "repeated_state",
+      "error": null,
+      "reported_elapsed_ms": 133642,
+      "counts": {
+        "decisions": 22,
+        "decision_http_attempts": 22,
+        "text_calls": 2,
+        "verification_calls": 17,
+        "verification_http_attempts": 17,
+        "browser_actions": 17,
+        "candidate_windows": 22
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 17,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-153102-348726",
+      "report": "artifacts/coches-validation-20261019-153102-348726/report.json",
+      "trace": "artifacts/coches-validation-20261019-153102-348726/trace.jsonl",
+      "agent_status": "predicted",
+      "stop_reason": null,
+      "error": {
+        "type": "RuntimeError",
+        "code": "cdp_session_lost",
+        "message": "Session with given id not found."
+      },
+      "reported_elapsed_ms": 5272,
+      "counts": {
+        "decisions": 3,
+        "decision_http_attempts": 3,
+        "text_calls": 0,
+        "verification_calls": 1,
+        "verification_http_attempts": 1,
+        "browser_actions": 0,
+        "candidate_windows": 3
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [],
+        "verification_recorded": []
+      },
+      "recorded_review_results": 0,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-154705-604459",
+      "report": "artifacts/coches-validation-20261019-154705-604459/report.json",
+      "trace": "artifacts/coches-validation-20261019-154705-604459/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_no_progress",
+      "error": null,
+      "reported_elapsed_ms": 62780,
+      "counts": {
+        "decisions": 13,
+        "decision_http_attempts": 13,
+        "text_calls": 1,
+        "verification_calls": 11,
+        "verification_http_attempts": 11,
+        "browser_actions": 4,
+        "candidate_windows": 13
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1-mini"
+        ]
+      },
+      "recorded_review_results": 11,
+      "independent_outcome": {
+        "status": "unknown",
+        "criteria": {
+          "bmw_z4": "unknown",
+          "madrid": "unknown",
+          "price_max": "unknown",
+          "first_result": "unknown"
+        },
+        "verified_count": 0,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-171644-221967",
+      "report": "artifacts/coches-validation-20261019-171644-221967/report.json",
+      "trace": "artifacts/coches-validation-20261019-171644-221967/trace.jsonl",
+      "agent_status": "unverified",
+      "stop_reason": "verification_no_progress",
+      "error": null,
+      "reported_elapsed_ms": 78266,
+      "counts": {
+        "decisions": 25,
+        "decision_http_attempts": 25,
+        "text_calls": 2,
+        "verification_calls": 17,
+        "verification_http_attempts": 17,
+        "browser_actions": 15,
+        "candidate_windows": 25
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1"
+        ]
+      },
+      "recorded_review_results": 17,
+      "independent_outcome": {
+        "status": "failed",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "failed"
+        },
+        "verified_count": 3,
+        "criterion_count": 4
+      }
+    },
+    {
+      "run": "coches-validation-20261019-181220-231274",
+      "report": "artifacts/coches-validation-20261019-181220-231274/report.json",
+      "trace": "artifacts/coches-validation-20261019-181220-231274/trace.jsonl",
+      "agent_status": "done",
+      "stop_reason": null,
+      "error": null,
+      "reported_elapsed_ms": 93804,
+      "counts": {
+        "decisions": 25,
+        "decision_http_attempts": 25,
+        "text_calls": 2,
+        "verification_calls": 18,
+        "verification_http_attempts": 18,
+        "browser_actions": 17,
+        "candidate_windows": 25
+      },
+      "models": {
+        "decision_requested": [
+          "jev-latest"
+        ],
+        "decision_reported": [
+          "jev-1.13.0"
+        ],
+        "text_reported": [
+          "openai/gpt-4.1-mini"
+        ],
+        "verification_recorded": [
+          "openai/gpt-4.1"
+        ]
+      },
+      "recorded_review_results": 18,
+      "independent_outcome": {
+        "status": "verified",
+        "criteria": {
+          "bmw_z4": "verified",
+          "madrid": "verified",
+          "price_max": "verified",
+          "first_result": "verified"
+        },
+        "verified_count": 4,
+        "criterion_count": 4
+      }
+    }
+  ],
+  "reviewer_probe_summary": {
+    "recorded_requests": 17,
+    "http_attempts": 17,
+    "model_assessments": 14,
+    "provider_request_failures": 3,
+    "explicitly_scored_cases": 8,
+    "passed_explicit_cases": 7,
+    "failed_explicit_cases": 1
+  },
+  "reviewer_probes": [
+    {
+      "source": "artifacts/reviewer-gpt41-probes-20261019-160056.json",
+      "cases": [
+        {
+          "case": "ready_confirmation",
+          "source_run": "coches-validation-20261019-152020-070696",
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "allow",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "allow",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "empty_confirmation",
+          "source_run": "coches-validation-20261019-152020-070696",
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_value",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_submission",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        }
+      ]
+    },
+    {
+      "source": "artifacts/reviewer-navigation-probes-20261019-172214.json",
+      "cases": [
+        {
+          "source_index": 13,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "provider_request_failure",
+          "error": "Verification provider request failed; no model assessment recorded."
+        },
+        {
+          "source_index": 14,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "provider_request_failure",
+          "error": "Verification provider request failed; no model assessment recorded."
+        },
+        {
+          "source_index": 15,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "provider_request_failure",
+          "error": "Verification provider request failed; no model assessment recorded."
+        }
+      ]
+    },
+    {
+      "source": "artifacts/reviewer-navigation-probes-20261019-173819.json",
+      "cases": [
+        {
+          "source_index": 13,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "allow",
+            "all_satisfied": false
+          }
+        },
+        {
+          "source_index": 14,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "source_index": 15,
+          "model": "openai/gpt-4.1",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        }
+      ]
+    },
+    {
+      "source": "artifacts/reviewer-probes-20261019-153038.json",
+      "cases": [
+        {
+          "case": "empty_confirmation",
+          "source_run": "coches-validation-20261019-152020-070696",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_value",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_submission",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        }
+      ]
+    },
+    {
+      "source": "artifacts/reviewer-probes-20261019-155450.json",
+      "cases": [
+        {
+          "case": "ready_confirmation",
+          "source_run": "coches-validation-20261019-152020-070696",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "allow",
+          "passed": false,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "empty_confirmation",
+          "source_run": "coches-validation-20261019-152020-070696",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_value",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        },
+        {
+          "case": "wrong_submission",
+          "source_run": "coches-validation-20261019-150911-746099",
+          "model": "openai/gpt-4.1-mini",
+          "http_attempts": 1,
+          "result_type": "model_assessment",
+          "expected": "reconsider",
+          "passed": true,
+          "assessment": {
+            "action_assessment": "reconsider",
+            "all_satisfied": false
+          }
+        }
+      ]
+    }
+  ],
+  "local_chrome": {
+    "source": "artifacts/local-browser-regression-20261019153839/report.json",
+    "total_checks_passed": 53,
+    "scripts": [
+      {
+        "script": "check_guards.py",
+        "exit_code": 0,
+        "checks_passed": 21,
+        "paid_model_calls": 0,
+        "simulated_model_calls": 0
+      },
+      {
+        "script": "check_candidate_observation.py",
+        "exit_code": 0,
+        "checks_passed": 11,
+        "paid_model_calls": 0,
+        "simulated_model_calls": 4
+      },
+      {
+        "script": "check_contextual_labels.py",
+        "exit_code": 0,
+        "checks_passed": 11,
+        "paid_model_calls": 0,
+        "simulated_model_calls": 0
+      },
+      {
+        "script": "check_recovery.py",
+        "exit_code": 0,
+        "checks_passed": 10,
+        "paid_model_calls": 0,
+        "simulated_model_calls": 0
+      }
+    ]
+  },
+  "session_recovery": [
+    {
+      "source": "artifacts/session-recovery-20261019-155700/report.json",
+      "fresh_after_detach": false,
+      "same_owned_target": true,
+      "new_session": true,
+      "session_recoveries": 1,
+      "before": {
+        "width": 1120,
+        "height": 780,
+        "focus": true,
+        "clicks": 1
+      },
+      "after": {
+        "width": 2553,
+        "height": 1133,
+        "focus": true,
+        "clicks": 1
+      },
+      "model_calls": 0,
+      "browser_actions": 1,
+      "new_snapshot_ready": "ready",
+      "viewport_preserved": false,
+      "input_count_preserved": true
+    },
+    {
+      "source": "artifacts/session-recovery-20261019-160101/report.json",
+      "fresh_after_detach": false,
+      "same_owned_target": true,
+      "new_session": true,
+      "session_recoveries": 1,
+      "before": {
+        "width": 1120,
+        "height": 780,
+        "focus": true,
+        "clicks": 1
+      },
+      "after": {
+        "width": 1120,
+        "height": 780,
+        "focus": true,
+        "clicks": 1
+      },
+      "model_calls": 0,
+      "browser_actions": 1,
+      "new_snapshot_ready": "ready",
+      "viewport_preserved": true,
+      "input_count_preserved": true
+    }
+  ],
+  "final_acceptance": {
+    "run": "coches-validation-20261019-181220-231274",
+    "agent_status": "done",
+    "independently_verified_criteria": 4,
+    "criteria_total": 4,
+    "verification_model": "openai/gpt-4.1",
+    "reported_elapsed_ms": 93804,
+    "reviewer_configuration": "The root agent selected the validated reviewer through the local ignored VERIFICATION_MODEL setting; credentials and external environment files are not copied here."
+  },
+  "final_repository_checks": {
+    "source": "Final command results reported by the root agent in this implementation session.",
+    "pytest": {
+      "status": "passed",
+      "tests_passed": 301
+    },
+    "ruff_check": "passed",
+    "node_check_app_js": "passed",
+    "node_check_snapshot_js": "passed",
+    "git_diff_check": "passed",
+    "uv_build": "passed"
+  }
+}
